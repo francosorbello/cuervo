@@ -8,7 +8,7 @@
 radius = 10.6667
 
 [node name="Crow" type="CharacterBody2D" node_paths=PackedStringArray("health")]
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 2
 motion_mode = 1
@@ -16,7 +16,7 @@ script = ExtResource("1_b8dg7")
 health = NodePath("HealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.7, 0.7)
+rotation = -1.5708
 texture = ExtResource("1_2o6fo")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
@@ -25,6 +25,5 @@ region_rect = Rect2(0, 0, 32, 32)
 shape = SubResource("CapsuleShape2D_75vvi")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_dmn0e")]
-position = Vector2(21.0231, 32.5513)
 
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
