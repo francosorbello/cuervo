@@ -20,11 +20,10 @@ func _physics_process(delta):
 	get_input()
 
 	_handle_movement(delta)
-	_handle_aim()	
+	_handle_aim()
 
-func _unhandled_input(event):
-	if(event.is_action_released("attack")):
-		_shoot()
+	if(Input.is_action_pressed("attack")):
+		_shoot()	
 
 ## Handles player movement
 func _handle_movement(delta: float):

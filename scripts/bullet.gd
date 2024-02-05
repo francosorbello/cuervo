@@ -1,13 +1,24 @@
 extends Area2D
 
 @export var speed: float = 300
+@export var time_alive: float = 8.0
+@export var damage: float = 100
 
 var direction: Vector2 = Vector2.ZERO
+var current_time_alive: float = 0.0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var velocity = direction * speed *_delta
 	global_position += velocity
 
+	if(current_time_alive > time_alive):
+		queue_free()
+
 func set_direction(new_direction: Vector2):
 	direction = new_direction
+
+
+func _on_body_entered(body:Node2D):
+	if(body.has_method("take_damage")):
+		body.take_damage(damage)
+		queue_free()

@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dehumyati8328"]
+[gd_scene load_steps=3 format=3 uid="uid://dehumyati8328"]
 
 [ext_resource type="PackedScene" uid="uid://lxsxg7btmnq2" path="res://scenes/player.tscn" id="1_eckfl"]
+[ext_resource type="PackedScene" uid="uid://c8davym48as2v" path="res://scenes/crow.tscn" id="2_u5g2g"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_eckfl")]
 position = Vector2(405, 204)
+
+[node name="Crow" parent="." instance=ExtResource("2_u5g2g")]
+position = Vector2(538, 307)

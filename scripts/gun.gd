@@ -3,8 +3,9 @@ extends Marker2D
 @export var Bullet: PackedScene
 @export var time_between_shots: float = 0.2
 
-var current_time_between_shots = 0
+var current_time_between_shots = 0.0
 var can_shoot: bool = true
+
 
 func shoot(direction: Vector2):
 	if(can_shoot):
@@ -26,3 +27,5 @@ func _process(delta):
 		current_time_between_shots += delta
 		if(current_time_between_shots > time_between_shots):
 			can_shoot = true
+	
+	

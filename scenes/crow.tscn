@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8davym48as2v"]
+
+[ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_2o6fo"]
+[ext_resource type="Script" path="res://scripts/crow.gd" id="1_b8dg7"]
+[ext_resource type="PackedScene" uid="uid://eead018oatl1" path="res://scenes/health_component.tscn" id="3_dmn0e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75vvi"]
+radius = 10.6667
+
+[node name="Crow" type="CharacterBody2D" node_paths=PackedStringArray("health")]
+scale = Vector2(3, 3)
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_b8dg7")
+health = NodePath("HealthComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_2o6fo")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_75vvi")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_dmn0e")]
+position = Vector2(21.0231, 32.5513)
+
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
