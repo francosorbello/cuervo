@@ -49,3 +49,4 @@ func _shoot():
 	
 func take_damage(damage):
 	print(damage)
+	$PlayerAudioController.play_pain_sound()
