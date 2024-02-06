@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8davym48as2v"]
+[gd_scene load_steps=21 format=3 uid="uid://c8davym48as2v"]
 
 [ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_2o6fo"]
 [ext_resource type="Script" path="res://scripts/crow.gd" id="1_b8dg7"]
@@ -6,6 +6,124 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75vvi"]
 radius = 10.6667
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ius54"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v824"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcuj2"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owfn3"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmurk"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s681k"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hvj5"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ixre"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od6tx"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd5jh"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc0mm"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofybv"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hijyh"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xeiu"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs183"]
+atlas = ExtResource("1_2o6fo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mace7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ius54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v824")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcuj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owfn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmurk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s681k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hvj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ixre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od6tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd5jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc0mm")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofybv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hijyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xeiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bs183")
+}],
+"loop": true,
+"name": &"move",
+"speed": 12.0
+}]
 
 [node name="Crow" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 scale = Vector2(2, 2)
@@ -15,15 +133,16 @@ motion_mode = 1
 script = ExtResource("1_b8dg7")
 health = NodePath("HealthComponent")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = -1.5708
-texture = ExtResource("1_2o6fo")
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_75vvi")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_dmn0e")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_mace7")
+animation = &"attack"
+autoplay = "move"
+frame_progress = 0.645354
 
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]

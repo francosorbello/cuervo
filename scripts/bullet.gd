@@ -4,8 +4,14 @@ extends Area2D
 @export var time_alive: float = 8.0
 @export var damage: float = 100
 
+signal on_hit()
+
 var direction: Vector2 = Vector2.ZERO
 var current_time_alive: float = 0.0
+
+func _ready():
+	# on_hit.connect(MouseManager._on_bullet_hit)
+	pass
 
 func _process(_delta):
 	var velocity = direction * speed *_delta
@@ -21,4 +27,5 @@ func set_direction(new_direction: Vector2):
 func _on_body_entered(body:Node2D):
 	if(body.has_method("take_damage")):
 		body.take_damage(damage)
+		on_hit.emit()
 		queue_free()

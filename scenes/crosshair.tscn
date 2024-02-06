@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxhcerk0300uh"]
+
+[ext_resource type="Script" path="res://scripts/crosshair.gd" id="1_12ykv"]
+[ext_resource type="Texture2D" uid="uid://w8h18rmr3mpn" path="res://assets/crosshair/crosshair.png" id="2_40p12"]
+[ext_resource type="Texture2D" uid="uid://be1hhwymt35yy" path="res://assets/crosshair/crosshair_hit.png" id="3_erhsr"]
+
+[sub_resource type="Animation" id="Animation_tj0ti"]
+resource_name = "hit_animation"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(2.73208, 1, 0.153893),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f5t06"]
+_data = {
+"hit_animation": SubResource("Animation_tj0ti")
+}
+
+[node name="Crosshair" type="Node2D"]
+script = ExtResource("1_12ykv")
+crosshair = ExtResource("2_40p12")
+crosshair_hit = ExtResource("3_erhsr")
+hit_time = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_erhsr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f5t06")
+}

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgntvaqhhdjcg"]
+
+[ext_resource type="Script" path="res://scripts/mouse_manager.gd" id="1_tord0"]
+[ext_resource type="PackedScene" uid="uid://dxhcerk0300uh" path="res://scenes/crosshair.tscn" id="2_kdlx1"]
+
+[node name="MouseManager" type="Node"]
+script = ExtResource("1_tord0")
+
+[node name="Crosshair" parent="." instance=ExtResource("2_kdlx1")]
