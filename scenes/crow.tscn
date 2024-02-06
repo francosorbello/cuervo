@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c8davym48as2v"]
+[gd_scene load_steps=11 format=3 uid="uid://c8davym48as2v"]
 
 [ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_2o6fo"]
 [ext_resource type="Script" path="res://scripts/crow.gd" id="1_b8dg7"]
@@ -7,126 +7,88 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75vvi"]
 radius = 10.6667
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ius54"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(128, 0, 32, 32)
+[sub_resource type="Animation" id="Animation_1kvjj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3v824"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(160, 0, 32, 32)
+[sub_resource type="Animation" id="Animation_nem6x"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qcuj2"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(192, 0, 32, 32)
+[sub_resource type="Animation" id="Animation_yfg1t"]
+resource_name = "move"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_owfn3"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(224, 0, 32, 32)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_en46e"]
+_data = {
+"RESET": SubResource("Animation_1kvjj"),
+"attack": SubResource("Animation_nem6x"),
+"move": SubResource("Animation_yfg1t")
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jmurk"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(256, 0, 32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8o5of"]
+size = Vector2(19.5, 31.5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s681k"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5hvj5"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(320, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ixre"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(352, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_od6tx"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(384, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kd5jh"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(416, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oc0mm"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(448, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ofybv"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hijyh"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1xeiu"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bs183"]
-atlas = ExtResource("1_2o6fo")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mace7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ius54")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3v824")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qcuj2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_owfn3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jmurk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s681k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5hvj5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ixre")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_od6tx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kd5jh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oc0mm")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ofybv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hijyh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1xeiu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bs183")
-}],
-"loop": true,
-"name": &"move",
-"speed": 12.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqeg2"]
-size = Vector2(21.5, 33.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tyff0"]
 
 [node name="Crow" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 scale = Vector2(2, 2)
@@ -136,20 +98,35 @@ motion_mode = 1
 script = ExtResource("1_b8dg7")
 health = NodePath("HealthComponent")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_2o6fo")
+hframes = 15
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_75vvi")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_dmn0e")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = -1.5708
-sprite_frames = SubResource("SpriteFrames_mace7")
-animation = &"attack"
-autoplay = "move"
-frame_progress = 0.0530634
+[node name="Animations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_en46e")
+}
 
-[node name="AttackRange" type="CollisionShape2D" parent="."]
+[node name="AttackDetectZone" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDetectZone"]
+position = Vector2(9.5, 0)
+shape = SubResource("RectangleShape2D_8o5of")
+
+[node name="Hitbox" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(10.5, 0)
-shape = SubResource("RectangleShape2D_mqeg2")
+shape = SubResource("CapsuleShape2D_tyff0")
 
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
+[connection signal="body_entered" from="AttackDetectZone" to="." method="_on_attack_detect_zone_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

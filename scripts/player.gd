@@ -47,3 +47,5 @@ func _shoot():
 	if(Gun != null):
 		Gun.shoot(get_global_mouse_position())
 	
+func take_damage(damage):
+	print(damage)

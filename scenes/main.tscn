@@ -5,17 +5,8 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="Crow4" parent="." instance=ExtResource("2_u5g2g")]
-position = Vector2(800, 102)
-
-[node name="Crow2" parent="." instance=ExtResource("2_u5g2g")]
-position = Vector2(196.803, 51.7144)
-
 [node name="Player" parent="." instance=ExtResource("1_eckfl")]
 position = Vector2(405, 204)
 
 [node name="Crow" parent="." instance=ExtResource("2_u5g2g")]
 position = Vector2(538, 307)
-
-[node name="Crow3" parent="." instance=ExtResource("2_u5g2g")]
-position = Vector2(194, 360)
