@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8davym48as2v"]
+[gd_scene load_steps=22 format=3 uid="uid://c8davym48as2v"]
 
 [ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_2o6fo"]
 [ext_resource type="Script" path="res://scripts/crow.gd" id="1_b8dg7"]
@@ -125,6 +125,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqeg2"]
+size = Vector2(21.5, 33.5)
+
 [node name="Crow" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 scale = Vector2(2, 2)
 collision_layer = 2
@@ -143,6 +146,10 @@ rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_mace7")
 animation = &"attack"
 autoplay = "move"
-frame_progress = 0.645354
+frame_progress = 0.0530634
+
+[node name="AttackRange" type="CollisionShape2D" parent="."]
+position = Vector2(10.5, 0)
+shape = SubResource("RectangleShape2D_mqeg2")
 
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
