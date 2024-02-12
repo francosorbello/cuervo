@@ -50,3 +50,7 @@ func _shoot():
 func take_damage(damage):
 	print(damage)
 	$PlayerAudioController.play_pain_sound()
+
+func _on_gun_shot_taken():
+	$Camera2D.do_shake()
+	pass # Replace with function body.

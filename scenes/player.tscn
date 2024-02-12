@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://lxsxg7btmnq2"]
+[gd_scene load_steps=10 format=3 uid="uid://lxsxg7btmnq2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_3v710"]
 [ext_resource type="Texture2D" uid="uid://bghse1b70spb4" path="res://assets/Spritesheet/spritesheet_characters.png" id="1_y7anu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/PlayerAudioController.gd" id="5_yho4a"]
 [ext_resource type="AudioStream" uid="uid://bnywsintcvmce" path="res://assets/sound_effects/pain/pain1.mp3" id="6_k8ysf"]
 [ext_resource type="AudioStream" uid="uid://bru420jk2f8sn" path="res://assets/sound_effects/pain/pain2.mp3" id="7_od54g"]
+[ext_resource type="Script" path="res://scripts/PlayerCamera.gd" id="8_2q0li"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o4v3o"]
 radius = 16.0
@@ -36,3 +37,11 @@ position = Vector2(26, 9)
 [node name="PlayerAudioController" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("5_yho4a")
 pain_sounds = Array[AudioStream]([ExtResource("6_k8ysf"), ExtResource("7_od54g")])
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+script = ExtResource("8_2q0li")
+noise_shake_speed = 10.0
+noise_shake_strength = 15.0
+
+[connection signal="shot_taken" from="Gun" to="." method="_on_gun_shot_taken"]

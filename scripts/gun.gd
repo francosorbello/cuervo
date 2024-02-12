@@ -6,6 +6,7 @@ extends Marker2D
 var current_time_between_shots = 0.0
 var can_shoot: bool = true
 
+signal shot_taken
 
 func shoot(direction: Vector2):
 	if(can_shoot):
@@ -20,7 +21,7 @@ func shoot(direction: Vector2):
 			current_time_between_shots = 0
 
 			$AudioStreamPlayer2D.play()
-			
+			shot_taken.emit()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
