@@ -25,7 +25,7 @@ func _on_health_component_on_death():
 
 func _on_attack_detect_zone_body_entered(_body):
 	if(_body.is_in_group("player")):
-		#$AnimationPlayer.attack()
+		$StateMachine.transition_to("AttackState")
 		pass
 
 func _on_hitbox_body_entered(body:Node2D):

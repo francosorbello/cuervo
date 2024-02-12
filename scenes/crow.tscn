@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8davym48as2v"]
+[gd_scene load_steps=16 format=3 uid="uid://c8davym48as2v"]
 
 [ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_2o6fo"]
 [ext_resource type="Script" path="res://scripts/crow/crow.gd" id="1_b8dg7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/crow/states/IdleState.gd" id="5_scbgf"]
 [ext_resource type="Script" path="res://scripts/crow/states/MoveState.gd" id="6_2yl8u"]
 [ext_resource type="Script" path="res://scripts/crow/crow_animation_manager.gd" id="6_slnf6"]
+[ext_resource type="Script" path="res://scripts/crow/states/AttackState.gd" id="7_r64m0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75vvi"]
 radius = 10.6667
@@ -40,6 +41,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_nem6x"]
 resource_name = "attack"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -154,6 +156,9 @@ script = ExtResource("5_scbgf")
 
 [node name="MoveState" type="Node" parent="StateMachine"]
 script = ExtResource("6_2yl8u")
+
+[node name="AttackState" type="Node" parent="StateMachine"]
+script = ExtResource("7_r64m0")
 
 [node name="AnimationPlayer" type="Node" parent="." node_paths=PackedStringArray("animation_player")]
 script = ExtResource("6_slnf6")
