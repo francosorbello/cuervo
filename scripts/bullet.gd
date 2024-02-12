@@ -9,6 +9,8 @@ signal on_hit()
 var direction: Vector2 = Vector2.ZERO
 var current_time_alive: float = 0.0
 
+var has_hit_body: bool = false
+
 func _ready():
 	# on_hit.connect(MouseManager._on_bullet_hit)
 	pass
@@ -25,7 +27,11 @@ func set_direction(new_direction: Vector2):
 
 
 func _on_body_entered(body:Node2D):
+	print(has_hit_body)
 	if(body.has_method("take_damage")):
+		if(has_hit_body):
+			return
+		has_hit_body = true
 		body.take_damage(damage)
 		on_hit.emit()
 		queue_free()

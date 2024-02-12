@@ -12,17 +12,14 @@ position = Vector2(515, 297)
 [node name="Crow" parent="." instance=ExtResource("2_u5g2g")]
 position = Vector2(118, 89)
 
-[node name="Crow2" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_u5g2g")]
-position = Vector2(206, 531)
-health = NodePath("../Crow/HealthComponent")
+[node name="Crow2" parent="." instance=ExtResource("2_u5g2g")]
+position = Vector2(134, 480)
 
-[node name="Crow3" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_u5g2g")]
-position = Vector2(886, 64)
-health = NodePath("../Crow/HealthComponent")
+[node name="Crow3" parent="." instance=ExtResource("2_u5g2g")]
+position = Vector2(989, 485)
 
-[node name="Crow4" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_u5g2g")]
-position = Vector2(927, 519)
-health = NodePath("../Crow/HealthComponent")
+[node name="Crow4" parent="." instance=ExtResource("2_u5g2g")]
+position = Vector2(1023, 39)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_x5d51")

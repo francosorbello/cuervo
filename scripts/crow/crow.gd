@@ -11,8 +11,6 @@ func _ready():
 	$Hitbox.monitoring = false
 
 func take_damage(damage: float):
-	if(is_queued_for_deletion()):
-		return
 	health.take_damage(damage)
 
 func _on_health_component_on_death():
@@ -37,9 +35,9 @@ func _on_attack_detect_zone_body_exited(body:Node2D):
 	if(body.is_in_group("player")):
 		$StateMachine.transition_to("MoveState")
 
-func _draw():
-	draw_circle($StateMachine/MoveState.get_circle_position(),10,Color.RED)
-	draw_line(position,$StateMachine/MoveState.get_circle_position(),Color.GREEN,10)
+# func _draw():
+# 	draw_circle($StateMachine/MoveState.get_circle_position(),10,Color.RED)
+# 	draw_line(position,$StateMachine/MoveState.get_circle_position(),Color.GREEN,10)
 
-func _process(delta):
-	queue_redraw()
+# func _process(delta):
+# 	queue_redraw()
