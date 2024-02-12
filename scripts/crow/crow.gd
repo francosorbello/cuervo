@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@export var speed: float = 50
 @export var health: Node2D
 @export var attack_damage: float = 20
 
@@ -23,7 +22,6 @@ func _on_attack_detect_zone_body_entered(_body):
 		pass
 
 func _on_hitbox_body_entered(body:Node2D):
-	print(body.name)
 	if(body.is_in_group("player")):
 		body.take_damage(attack_damage)
 
