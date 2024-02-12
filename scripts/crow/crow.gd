@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var attack_damage: float = 20
 
 var player: Node
-var allow_movement: bool = true
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -14,6 +13,7 @@ func take_damage(damage: float):
 	health.take_damage(damage)
 
 func _on_health_component_on_death():
+	$CollisionShape2D.set_deferred("disabled",true)
 	$StateMachine.transition_to("DeathState")
 
 func _on_attack_detect_zone_body_entered(_body):
