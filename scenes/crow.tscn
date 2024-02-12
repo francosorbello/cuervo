@@ -149,7 +149,7 @@ shape = SubResource("CapsuleShape2D_tyff0")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_gqo0f")
-initial_state = NodePath("MoveState")
+initial_state = NodePath("IdleState")
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("5_scbgf")

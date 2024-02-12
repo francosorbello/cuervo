@@ -1,7 +1,6 @@
 extends State
 
 func enter():
-    print("start idle state")
     state_owner.get_animation_player().move()
     pass
 
