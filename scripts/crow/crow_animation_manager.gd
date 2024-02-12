@@ -7,3 +7,6 @@ func move():
 
 func attack():
     animation_player.play("attack")
+
+func die():
+    animation_player.play("die")

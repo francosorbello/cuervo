@@ -14,7 +14,7 @@ func take_damage(damage: float):
 	health.take_damage(damage)
 
 func _on_health_component_on_death():
-	queue_free()
+	$StateMachine.transition_to("DeathState")
 
 func _on_attack_detect_zone_body_entered(_body):
 	if(_body.is_in_group("player")):

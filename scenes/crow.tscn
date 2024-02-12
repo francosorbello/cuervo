@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8davym48as2v"]
+[gd_scene load_steps=21 format=3 uid="uid://c8davym48as2v"]
 
 [ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_2o6fo"]
 [ext_resource type="Script" path="res://scripts/crow/crow.gd" id="1_b8dg7"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://scripts/crow/states/AttackState.gd" id="7_r64m0"]
 [ext_resource type="Script" path="res://scripts/crow/states/DiveState.gd" id="8_q80d3"]
 [ext_resource type="PackedScene" uid="uid://cibyoh3emq52s" path="res://scenes/surround_position_component.tscn" id="9_6n102"]
+[ext_resource type="Script" path="res://scripts/crow/states/DeathState.gd" id="10_jh7m4"]
+[ext_resource type="AudioStream" uid="uid://bldib33qfsnka" path="res://assets/sound_effects/crow/death/crow_death.mp3" id="11_obm4h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75vvi"]
 radius = 10.6667
@@ -100,10 +102,40 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_qb2im"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 15, 16, 17, 18]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_en46e"]
 _data = {
 "RESET": SubResource("Animation_1kvjj"),
 "attack": SubResource("Animation_nem6x"),
+"die": SubResource("Animation_qb2im"),
 "move": SubResource("Animation_yfg1t")
 }
 
@@ -123,7 +155,7 @@ health = NodePath("HealthComponent")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708
 texture = ExtResource("1_2o6fo")
-hframes = 15
+hframes = 19
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_75vvi")
@@ -167,9 +199,16 @@ script = ExtResource("8_q80d3")
 
 [node name="SurroundPositionComponent" parent="StateMachine/DiveState" instance=ExtResource("9_6n102")]
 
+[node name="DeathState" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_player")]
+script = ExtResource("10_jh7m4")
+death_sound = ExtResource("11_obm4h")
+audio_player = NodePath("../../AudioStreamPlayer2D")
+
 [node name="AnimationPlayer" type="Node" parent="." node_paths=PackedStringArray("animation_player")]
 script = ExtResource("6_slnf6")
 animation_player = NodePath("../Animations")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
 [connection signal="body_entered" from="AttackDetectZone" to="." method="_on_attack_detect_zone_body_entered"]
