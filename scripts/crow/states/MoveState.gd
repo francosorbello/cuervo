@@ -1,7 +1,7 @@
 extends State
 
 @export var move_speed : float = 50
-@export var dive_threshold : float = 300
+@export var dive_threshold : float = 350
 
 func enter():
     print("start move")

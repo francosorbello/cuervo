@@ -7,10 +7,22 @@
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_eckfl")]
-position = Vector2(405, 204)
+position = Vector2(515, 297)
 
 [node name="Crow" parent="." instance=ExtResource("2_u5g2g")]
-position = Vector2(538, 307)
+position = Vector2(118, 89)
+
+[node name="Crow2" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_u5g2g")]
+position = Vector2(206, 531)
+health = NodePath("../Crow/HealthComponent")
+
+[node name="Crow3" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_u5g2g")]
+position = Vector2(886, 64)
+health = NodePath("../Crow/HealthComponent")
+
+[node name="Crow4" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_u5g2g")]
+position = Vector2(927, 519)
+health = NodePath("../Crow/HealthComponent")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_x5d51")

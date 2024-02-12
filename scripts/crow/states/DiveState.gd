@@ -1,7 +1,7 @@
 extends State
 
-@export var dive_speed : float = 300
-@export var dive_threshold: float = 10
+@export var dive_speed : float = 400
+@export var dive_threshold: float = 40
 
 var last_player_position : Vector2
 
