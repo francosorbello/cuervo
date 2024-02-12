@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8davym48as2v"]
+[gd_scene load_steps=14 format=3 uid="uid://c8davym48as2v"]
 
 [ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_2o6fo"]
-[ext_resource type="Script" path="res://scripts/crow.gd" id="1_b8dg7"]
+[ext_resource type="Script" path="res://scripts/crow/crow.gd" id="1_b8dg7"]
 [ext_resource type="PackedScene" uid="uid://eead018oatl1" path="res://scenes/health_component.tscn" id="3_dmn0e"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="4_gqo0f"]
+[ext_resource type="Script" path="res://scripts/crow/IdleState.gd" id="5_scbgf"]
+[ext_resource type="Script" path="res://scripts/crow/crow_animation_manager.gd" id="6_slnf6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75vvi"]
 radius = 10.6667
@@ -140,6 +143,17 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(10.5, 0)
 shape = SubResource("CapsuleShape2D_tyff0")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_gqo0f")
+initial_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("5_scbgf")
+
+[node name="AnimationPlayer" type="Node" parent="." node_paths=PackedStringArray("animation_player")]
+script = ExtResource("6_slnf6")
+animation_player = NodePath("../Animations")
 
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
 [connection signal="body_entered" from="AttackDetectZone" to="." method="_on_attack_detect_zone_body_entered"]

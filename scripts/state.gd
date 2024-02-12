@@ -4,17 +4,17 @@ var state_machine: StateMachine = null
 var state_owner: Node = null
 
 func setup(s_owner: Node, s_machine: StateMachine):
-    self.state_machine = s_owner
-    self.state_owner = s_machine
+	self.state_machine = s_machine
+	self.state_owner = s_owner
 
 func enter():
-    pass
+	pass
 
 func update(delta: float):
-    pass
+	pass
 
 func pyhsics_update(delta: float):
-    pass
+	pass
 
 func exit():
-    pass
+	pass
