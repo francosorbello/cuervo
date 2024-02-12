@@ -18,6 +18,8 @@ func shoot(direction: Vector2):
 
 			can_shoot = false
 			current_time_between_shots = 0
+
+			$AudioStreamPlayer2D.play()
 			
 
 
