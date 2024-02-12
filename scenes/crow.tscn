@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://c8davym48as2v"]
 
-[ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_2o6fo"]
 [ext_resource type="Script" path="res://scripts/crow/crow.gd" id="1_b8dg7"]
+[ext_resource type="Texture2D" uid="uid://cy2dpssolgttc" path="res://assets/raven_outline2.png" id="2_k61c8"]
 [ext_resource type="PackedScene" uid="uid://eead018oatl1" path="res://scenes/health_component.tscn" id="3_dmn0e"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="4_gqo0f"]
 [ext_resource type="AudioStream" uid="uid://dbb0ner8g0wmb" path="res://assets/sound_effects/crow/crow_flap.mp3" id="4_gu65t"]
@@ -179,10 +179,12 @@ health = NodePath("HealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708
-texture = ExtResource("1_2o6fo")
+texture = ExtResource("2_k61c8")
 hframes = 19
+region_rect = Rect2(0, 0, 624, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_75vvi")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_dmn0e")]
@@ -193,6 +195,7 @@ libraries = {
 }
 
 [node name="AttackDetectZone" type="Area2D" parent="."]
+visible = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDetectZone"]
@@ -200,6 +203,7 @@ position = Vector2(9.5, 0)
 shape = SubResource("RectangleShape2D_8o5of")
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

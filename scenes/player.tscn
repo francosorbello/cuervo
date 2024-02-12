@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://lxsxg7btmnq2"]
+[gd_scene load_steps=11 format=3 uid="uid://lxsxg7btmnq2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_3v710"]
 [ext_resource type="Texture2D" uid="uid://bghse1b70spb4" path="res://assets/Spritesheet/spritesheet_characters.png" id="1_y7anu"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://bnywsintcvmce" path="res://assets/sound_effects/pain/pain1.mp3" id="6_k8ysf"]
 [ext_resource type="AudioStream" uid="uid://bru420jk2f8sn" path="res://assets/sound_effects/pain/pain2.mp3" id="7_od54g"]
 [ext_resource type="Script" path="res://scripts/PlayerCamera.gd" id="8_2q0li"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_be72n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o4v3o"]
 radius = 16.0
@@ -23,6 +25,7 @@ Gun = NodePath("Gun")
 [node name="Crosshair" parent="." instance=ExtResource("2_i1vvn")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_be72n")
 position = Vector2(8, 0)
 texture = ExtResource("1_y7anu")
 region_enabled = true
@@ -39,6 +42,7 @@ script = ExtResource("5_yho4a")
 pain_sounds = Array[AudioStream]([ExtResource("6_k8ysf"), ExtResource("7_od54g")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 script = ExtResource("8_2q0li")
 noise_shake_speed = 10.0
