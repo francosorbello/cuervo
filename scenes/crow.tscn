@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c8davym48as2v"]
+[gd_scene load_steps=18 format=3 uid="uid://c8davym48as2v"]
 
 [ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_2o6fo"]
 [ext_resource type="Script" path="res://scripts/crow/crow.gd" id="1_b8dg7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/crow/crow_animation_manager.gd" id="6_slnf6"]
 [ext_resource type="Script" path="res://scripts/crow/states/AttackState.gd" id="7_r64m0"]
 [ext_resource type="Script" path="res://scripts/crow/states/DiveState.gd" id="8_q80d3"]
+[ext_resource type="PackedScene" uid="uid://cibyoh3emq52s" path="res://scenes/surround_position_component.tscn" id="9_6n102"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75vvi"]
 radius = 10.6667
@@ -163,6 +164,8 @@ script = ExtResource("7_r64m0")
 
 [node name="DiveState" type="Node" parent="StateMachine"]
 script = ExtResource("8_q80d3")
+
+[node name="SurroundPositionComponent" parent="StateMachine/DiveState" instance=ExtResource("9_6n102")]
 
 [node name="AnimationPlayer" type="Node" parent="." node_paths=PackedStringArray("animation_player")]
 script = ExtResource("6_slnf6")

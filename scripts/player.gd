@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var Gun: Marker2D
 
 var previous_motion: Vector2 = Vector2.ZERO
-var previous_aim_position: Vector2 = get_global_mouse_position()
+var previous_aim_position: Vector2 
 
 ## gets player input and transforms it to velocity
 func get_input():
