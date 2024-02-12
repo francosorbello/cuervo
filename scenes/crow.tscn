@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8davym48as2v"]
+[gd_scene load_steps=22 format=3 uid="uid://c8davym48as2v"]
 
 [ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_2o6fo"]
 [ext_resource type="Script" path="res://scripts/crow/crow.gd" id="1_b8dg7"]
 [ext_resource type="PackedScene" uid="uid://eead018oatl1" path="res://scenes/health_component.tscn" id="3_dmn0e"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="4_gqo0f"]
+[ext_resource type="AudioStream" uid="uid://dbb0ner8g0wmb" path="res://assets/sound_effects/crow/crow_flap.mp3" id="4_gu65t"]
 [ext_resource type="Script" path="res://scripts/crow/states/IdleState.gd" id="5_scbgf"]
 [ext_resource type="Script" path="res://scripts/crow/states/MoveState.gd" id="6_2yl8u"]
 [ext_resource type="Script" path="res://scripts/crow/crow_animation_manager.gd" id="6_slnf6"]
@@ -100,6 +101,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_gu65t")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_qb2im"]
@@ -209,6 +234,8 @@ script = ExtResource("6_slnf6")
 animation_player = NodePath("../Animations")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gu65t")
+max_distance = 500.0
 
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
 [connection signal="body_entered" from="AttackDetectZone" to="." method="_on_attack_detect_zone_body_entered"]

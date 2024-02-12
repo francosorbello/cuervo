@@ -13,7 +13,6 @@ var noise_position: float = 0.0
 func _ready():
 	random_generator.randomize()
 	noise_generator.seed = random_generator.randi()
-	# noise_generator.period = 2
 
 func do_shake():
 	shake_strength = noise_shake_strength
