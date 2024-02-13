@@ -23,6 +23,7 @@ func spawn_crows(spawn_points : Array):
         crow.death.connect(on_crow_death)
         crow.global_position = spawn_points[chosen_obstacle]
         crow.do_dive()
+        
         pass
     pass
 

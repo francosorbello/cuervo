@@ -220,6 +220,9 @@ script = ExtResource("5_scbgf")
 [node name="MoveState" type="Node" parent="StateMachine"]
 script = ExtResource("6_2yl8u")
 
+[node name="SurroundPositionComponent" parent="StateMachine/MoveState" instance=ExtResource("9_6n102")]
+surround_radius = 50.0
+
 [node name="AttackState" type="Node" parent="StateMachine"]
 script = ExtResource("7_r64m0")
 

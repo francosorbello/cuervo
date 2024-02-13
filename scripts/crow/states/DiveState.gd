@@ -9,7 +9,7 @@ func enter():
     last_player_position = state_owner.get_player().global_position
 
 func pyhsics_update(delta):
-    var target = $SurroundPositionComponent.get_circle_position(last_player_position)
+    var target = $SurroundPositionComponent.get_random_circle_position(last_player_position)
     state_owner.look_at(target)
 
     state_owner.velocity = state_owner.global_position.direction_to(target)

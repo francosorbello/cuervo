@@ -11,7 +11,7 @@ func _ready():
     $AnimationPlayer.play("idle")
     
 
-func setup(pos: Vector2, _target: Node2D):
+func setup(pos: Vector2, _target: Node2D = null):
     target = _target
     global_position = pos
     # position = pos

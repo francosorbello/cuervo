@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var attack_damage: float = 20
 
 var player: Node
+var index : int = 0
 signal death
 
 func _ready():
@@ -41,5 +42,4 @@ func do_dive():
 	$StateMachine.transition_to("DiveState")
 
 func die():
-	print(name+" died")
 	queue_free()

@@ -18,11 +18,7 @@ func _ready():
         var obstacle = CrowObstacle.instantiate()
         add_child(obstacle)
 
-        if(player != null):
-            obstacle.setup(index_to_position(crow_index,current_radius),player)
-        else:
-            obstacle.setup(index_to_position(crow_index,current_radius),self)
-
+        obstacle.setup(index_to_position(crow_index,current_radius),player)
         obstacles.append(obstacle)
     
     $CrowSpawner.wave_finished.connect(on_wave_finished)
