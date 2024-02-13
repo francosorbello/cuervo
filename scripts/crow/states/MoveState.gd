@@ -7,7 +7,6 @@ extends State
 var random_angle : float
 
 func enter():
-    print("start move")
     state_owner.get_animation_player().move()
 
     var rng = RandomNumberGenerator.new()

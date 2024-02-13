@@ -18,16 +18,16 @@ func _ready():
 func _process(_delta):
 	var velocity = direction * speed *_delta
 	global_position += velocity
-
+	
 	if(current_time_alive > time_alive):
 		queue_free()
 
 func set_direction(new_direction: Vector2):
 	direction = new_direction
+	rotation = direction.angle()
 
 
 func _on_body_entered(body:Node2D):
-	print(has_hit_body)
 	if(body.has_method("take_damage")):
 		if(has_hit_body):
 			return

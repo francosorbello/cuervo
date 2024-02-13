@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://c8davym48as2v"]
 
 [ext_resource type="Script" path="res://scripts/crow/crow.gd" id="1_b8dg7"]
-[ext_resource type="Texture2D" uid="uid://cy2dpssolgttc" path="res://assets/raven_outline2.png" id="2_k61c8"]
+[ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="2_a1n4n"]
 [ext_resource type="PackedScene" uid="uid://eead018oatl1" path="res://scenes/health_component.tscn" id="3_dmn0e"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="4_gqo0f"]
 [ext_resource type="AudioStream" uid="uid://dbb0ner8g0wmb" path="res://assets/sound_effects/crow/crow_flap.mp3" id="4_gu65t"]
@@ -86,6 +86,35 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_qb2im"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 15, 16, 17, 18]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_yfg1t"]
 resource_name = "move"
 length = 0.4
@@ -127,35 +156,6 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_qb2im"]
-resource_name = "die"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [15, 15, 16, 17, 18]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.9),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_en46e"]
 _data = {
 "RESET": SubResource("Animation_1kvjj"),
@@ -179,7 +179,7 @@ health = NodePath("HealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708
-texture = ExtResource("2_k61c8")
+texture = ExtResource("2_a1n4n")
 hframes = 19
 region_rect = Rect2(0, 0, 624, 32)
 

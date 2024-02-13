@@ -22,6 +22,8 @@ func shoot(direction: Vector2):
 
 			$AudioStreamPlayer2D.play()
 			shot_taken.emit()
+			do_muzzle_flash()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,4 +33,10 @@ func _process(delta):
 		if(current_time_between_shots > time_between_shots):
 			can_shoot = true
 	
-	
+func do_muzzle_flash():
+	$PointLight2D.set_deferred("enabled",true)
+	$Timer.start()
+
+
+func _on_timer_timeout():
+	$PointLight2D.set_deferred("enabled",false)

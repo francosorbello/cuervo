@@ -6,7 +6,6 @@ extends State
 var last_player_position : Vector2
 
 func enter():
-    print("start dive")
     last_player_position = state_owner.get_player().global_position
 
 func pyhsics_update(delta):
