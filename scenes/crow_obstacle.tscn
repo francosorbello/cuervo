@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3q0uxppsbpmy"]
+
+[ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_3mcl4"]
+[ext_resource type="Script" path="res://scenes/crow_obstacle.gd" id="1_s2huw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xkkt"]
+size = Vector2(34, 34)
+
+[sub_resource type="Animation" id="Animation_lmr1t"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_d5i44"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o1j3w"]
+_data = {
+"RESET": SubResource("Animation_d5i44"),
+"idle": SubResource("Animation_lmr1t")
+}
+
+[node name="CrowObstacle" type="StaticBody2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_s2huw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3mcl4")
+hframes = 19
+region_enabled = true
+region_rect = Rect2(0, 0, 608, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4xkkt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o1j3w")
+}

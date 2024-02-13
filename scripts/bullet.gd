@@ -34,4 +34,4 @@ func _on_body_entered(body:Node2D):
 		has_hit_body = true
 		body.take_damage(damage)
 		on_hit.emit()
-		queue_free()
+	queue_free()

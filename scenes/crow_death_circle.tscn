@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dndjt2erlthh4"]
+
+[ext_resource type="Script" path="res://scripts/crow_death_circle.gd" id="1_uangt"]
+[ext_resource type="PackedScene" uid="uid://c3q0uxppsbpmy" path="res://scenes/crow_obstacle.tscn" id="2_l8cle"]
+
+[node name="CrowDeathCircle" type="Node2D"]
+script = ExtResource("1_uangt")
+crow_amount = 50
+CrowObstacle = ExtResource("2_l8cle")

@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://lxsxg7btmnq2" path="res://scenes/player.tscn" id="1_eckfl"]
 [ext_resource type="Shader" path="res://assets/shaders/vignette.gdshader" id="1_juiww"]
 [ext_resource type="Texture2D" uid="uid://bml5gyg0rklyx" path="res://assets/world/ebackground2.png" id="2_drxlm"]
-[ext_resource type="PackedScene" uid="uid://c8davym48as2v" path="res://scenes/crow.tscn" id="2_u5g2g"]
 [ext_resource type="Texture2D" uid="uid://pav7k525xr62" path="res://assets/world/ebackground.png" id="3_gkd7v"]
 [ext_resource type="Texture2D" uid="uid://dieqgkoihsp1i" path="res://assets/world/bgtest2.png" id="3_rco6b"]
 [ext_resource type="AudioStream" uid="uid://by0t67dg1pyk1" path="res://assets/sound_effects/tomorrow never knows_3.mp3" id="3_x5d51"]
 [ext_resource type="Shader" path="res://assets/shaders/bg2.gdshader" id="4_hq8ie"]
 [ext_resource type="Shader" path="res://scenes/hexgrid.gdshader" id="5_cjns2"]
+[ext_resource type="PackedScene" uid="uid://dndjt2erlthh4" path="res://scenes/crow_death_circle.tscn" id="8_yrqfe"]
 [ext_resource type="Texture2D" uid="uid://b6if53t8cjyqs" path="res://assets/world/bakground.png" id="9_bltpd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w5amq"]
@@ -133,6 +133,9 @@ layer_0/tile_data = PackedInt32Array(720890, 0, 0, 524282, 0, 0, 458746, 0, 0, 3
 [node name="Foreground" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
+[node name="CrowDeathCircle" parent="Foreground" instance=ExtResource("8_yrqfe")]
+position = Vector2(534, 296)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Foreground"]
 stream = ExtResource("3_x5d51")
 volume_db = -8.0
@@ -152,18 +155,6 @@ offset_right = -515.0
 offset_bottom = -297.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Crow" parent="Foreground" instance=ExtResource("2_u5g2g")]
-position = Vector2(118, 89)
-
-[node name="Crow2" parent="Foreground" instance=ExtResource("2_u5g2g")]
-position = Vector2(134, 480)
-
-[node name="Crow3" parent="Foreground" instance=ExtResource("2_u5g2g")]
-position = Vector2(989, 485)
-
-[node name="Crow4" parent="Foreground" instance=ExtResource("2_u5g2g")]
-position = Vector2(1023, 39)
 
 [node name="BG Effects" type="CanvasLayer" parent="."]
 layer = -1
