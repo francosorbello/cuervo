@@ -45,6 +45,7 @@ _data = {
 }
 
 [node name="CrowObstacle" type="StaticBody2D"]
+scale = Vector2(2, 2)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_s2huw")

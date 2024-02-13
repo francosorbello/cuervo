@@ -1,9 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dndjt2erlthh4"]
+[gd_scene load_steps=5 format=3 uid="uid://dndjt2erlthh4"]
 
 [ext_resource type="Script" path="res://scripts/crow_death_circle.gd" id="1_uangt"]
 [ext_resource type="PackedScene" uid="uid://c3q0uxppsbpmy" path="res://scenes/crow_obstacle.tscn" id="2_l8cle"]
+[ext_resource type="PackedScene" uid="uid://c8davym48as2v" path="res://scenes/crow.tscn" id="3_vu0wf"]
+[ext_resource type="Script" path="res://scripts/CrowSpawner.gd" id="4_jrtx0"]
 
 [node name="CrowDeathCircle" type="Node2D"]
 script = ExtResource("1_uangt")
-crow_amount = 5
+initial_radius = 500.0
+obstacle_amount = 50
 CrowObstacle = ExtResource("2_l8cle")
+
+[node name="CrowSpawner" type="Node2D" parent="."]
+script = ExtResource("4_jrtx0")
+Crow = ExtResource("3_vu0wf")
+
+[node name="WaveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

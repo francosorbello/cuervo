@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var attack_damage: float = 20
 
 var player: Node
+signal death
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -13,6 +14,7 @@ func take_damage(damage: float):
 	health.take_damage(damage)
 
 func _on_health_component_on_death():
+	death.emit()
 	$CollisionShape2D.set_deferred("disabled",true)
 	$StateMachine.transition_to("DeathState")
 
@@ -35,9 +37,9 @@ func _on_attack_detect_zone_body_exited(body:Node2D):
 	if(body.is_in_group("player")):
 		$StateMachine.transition_to("MoveState")
 
-# func _draw():
-# 	draw_circle($StateMachine/MoveState.get_circle_position(),10,Color.RED)
-# 	draw_line(position,$StateMachine/MoveState.get_circle_position(),Color.GREEN,10)
+func do_dive():
+	$StateMachine.transition_to("DiveState")
 
-# func _process(delta):
-# 	queue_redraw()
+func die():
+	print(name+" died")
+	queue_free()
