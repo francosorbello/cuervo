@@ -48,7 +48,7 @@ func _shoot():
 		Gun.shoot(get_global_mouse_position())
 	
 func take_damage(damage):
-	print(damage)
+	# print(damage)
 	$PlayerAudioController.play_pain_sound()
 
 func _on_gun_shot_taken():

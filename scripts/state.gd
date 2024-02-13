@@ -18,3 +18,6 @@ func pyhsics_update(delta: float):
 
 func exit():
 	pass
+
+func can_exit() -> bool:
+	return true

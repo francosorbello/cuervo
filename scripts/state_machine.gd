@@ -14,6 +14,9 @@ func _ready():
 	current_state.enter()
 
 func transition_to(target_state_name: String):
+	if(not current_state.can_exit()):
+		return
+		
 	if not has_node(target_state_name):
 		return
 
