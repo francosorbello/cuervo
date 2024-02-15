@@ -3,6 +3,8 @@ extends Node2D
 @export var initial_radius : float = 300
 @export var obstacle_amount: int = 20
 @export var reduce_rate: float = 5
+@export var autostart : bool = false
+@export var obstacle_anim_timer : float = 0.05
 
 @export var CrowObstacle : PackedScene
 
@@ -15,9 +17,12 @@ func _ready():
     var player = get_tree().get_first_node_in_group("player")
     current_radius = initial_radius 
     for crow_index in range(0,obstacle_amount):
+        
+        await get_tree().create_timer(obstacle_anim_timer).timeout
+        
         var obstacle = CrowObstacle.instantiate()
         add_child(obstacle)
-
+        
         obstacle.setup(index_to_position(crow_index,current_radius),player)
         obstacles.append(obstacle)
     
