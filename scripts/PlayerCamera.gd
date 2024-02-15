@@ -7,9 +7,10 @@ extends Camera2D
 @export_category("Zoom")
 @export var f_zoom_out: float = 0.8
 @export var f_zoom_in: float = 1.1
-@export var zoom_in_animation_duration: float = 1.0
-@export var zoom_out_animation_duration: float = 1.0
 
+@export var zoom_in_duration: float = 0.8
+@export var zoom_out_duration: float = 0.8
+@export var focus_duration = 0.8
 
 @onready var random_generator = RandomNumberGenerator.new()
 @onready var noise_generator = FastNoiseLite.new()
@@ -40,13 +41,23 @@ func get_noise_offset(delta: float) -> Vector2:
 	)
 
 func zoom_in():
-	_zoom_animation(f_zoom_in,zoom_in_animation_duration)
-	pass
+	_zoom_animation(f_zoom_in,zoom_in_duration)
 
 func zoom_out():
-	_zoom_animation(f_zoom_out,zoom_out_animation_duration)
+	_zoom_animation(f_zoom_out,zoom_out_duration)
 	pass
 
 func _zoom_animation(value: float, time: float):
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "zoom",Vector2(value,value),time).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
+
+func _focus_animation(x : float, y: float, time: float):
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position",Vector2(x,y),time).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
+
+func focus_top():
+	_focus_animation(100,0, focus_duration)
+	pass
+
+func focus_center():
+	_focus_animation(0,0,focus_duration)

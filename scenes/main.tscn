@@ -104,7 +104,7 @@ shader_parameter/vignette_opacity = 0.862
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1nr1"]
-size = Vector2(1666, 62)
+size = Vector2(164, 110)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g01ky"]
 shader = ExtResource("4_hq8ie")
@@ -150,7 +150,7 @@ stream = ExtResource("3_x5d51")
 volume_db = -8.0
 
 [node name="Player" parent="Foreground/StoryManager" instance=ExtResource("1_eckfl")]
-position = Vector2(435, 1329)
+position = Vector2(449, 949)
 
 [node name="Vignette effect" type="ColorRect" parent="Foreground/StoryManager/Player"]
 material = SubResource("ShaderMaterial_ufcw1")
@@ -169,15 +169,15 @@ position = Vector2(534, 296)
 obstacle_anim_timer = 0.003
 
 [node name="CrowObstacle" parent="Foreground/StoryManager" instance=ExtResource("9_be1cu")]
-position = Vector2(464, 537)
+position = Vector2(448, 479)
 rotation = 1.5708
 
 [node name="TriggerArea" type="Area2D" parent="Foreground/StoryManager"]
-position = Vector2(442, 802)
+position = Vector2(434, 802)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/StoryManager/TriggerArea"]
-position = Vector2(59, 2)
+position = Vector2(13, -25)
 shape = SubResource("RectangleShape2D_o1nr1")
 
 [node name="BG Effects" type="CanvasLayer" parent="."]
