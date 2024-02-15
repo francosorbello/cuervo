@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=6 format=3 uid="uid://deoph1kkhwhef"]
+
+[ext_resource type="Script" path="res://scripts/dialogues/Dialogue.gd" id="1_mvjkg"]
+[ext_resource type="Script" path="res://scripts/dialogues/DialogueLine.gd" id="1_whtk2"]
+
+[sub_resource type="Resource" id="Resource_vpdqi"]
+script = ExtResource("1_whtk2")
+Line = "Creature of flesh and bone."
+duration = 1.0
+
+[sub_resource type="Resource" id="Resource_uopq5"]
+script = ExtResource("1_whtk2")
+Line = "You come here, seeking for redemption,"
+duration = 1.0
+
+[sub_resource type="Resource" id="Resource_x6w0r"]
+script = ExtResource("1_whtk2")
+Line = "Yet you know our judgement will bring you penance"
+duration = 1.0
+
+[resource]
+script = ExtResource("1_mvjkg")
+lines = Array[ExtResource("1_whtk2")]([SubResource("Resource_vpdqi"), SubResource("Resource_uopq5"), SubResource("Resource_x6w0r")])
