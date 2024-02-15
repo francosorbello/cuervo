@@ -14,12 +14,16 @@ var current_radius: float = 0
 @onready var rand : RandomNumberGenerator = RandomNumberGenerator.new() 
 
 func _ready():
+    if autostart:
+        start_circle()
+
+func start_circle():
     var player = get_tree().get_first_node_in_group("player")
     current_radius = initial_radius 
     for crow_index in range(0,obstacle_amount):
         
         await get_tree().create_timer(obstacle_anim_timer).timeout
-        
+
         var obstacle = CrowObstacle.instantiate()
         add_child(obstacle)
         

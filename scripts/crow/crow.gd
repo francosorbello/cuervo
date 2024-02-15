@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var health: Node2D
 @export var attack_damage: float = 20
+@export var start_idle: bool = false
 
 var player: Node
 var index : int = 0
@@ -10,6 +11,8 @@ signal death
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	$Hitbox.monitoring = false
+	if(start_idle):
+		$StateMachine.transition_to("IdleState")
 
 func take_damage(damage: float):
 	health.take_damage(damage)

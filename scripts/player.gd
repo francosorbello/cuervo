@@ -54,3 +54,9 @@ func take_damage(damage):
 func _on_gun_shot_taken():
 	$Camera2D.do_shake()
 	pass # Replace with function body.
+
+func zoom_in():
+	$Camera2D.zoom_in()
+
+func zoom_out():
+	$Camera2D.zoom_out()
