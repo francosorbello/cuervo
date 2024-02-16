@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d15fskx1myq4q"]
+[gd_scene load_steps=2 format=3 uid="uid://d15fskx1myq4q"]
 
 [ext_resource type="Script" path="res://scripts/ui/dialogue_ui.gd" id="1_fbp78"]
-[ext_resource type="Resource" uid="uid://deoph1kkhwhef" path="res://scripts/dialogues/resources/FirstConversation.tres" id="2_uloe7"]
 
 [node name="DialogueUI" type="Control" node_paths=PackedStringArray("line_label")]
 layout_mode = 3
@@ -12,9 +11,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fbp78")
 line_label = NodePath("HBoxContainer/VBoxContainer/Line")
-max_rows = 2
-autostart = true
-initial_dialogue = ExtResource("2_uloe7")
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1

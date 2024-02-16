@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://dehumyati8328"]
+[gd_scene load_steps=26 format=3 uid="uid://dehumyati8328"]
 
+[ext_resource type="PackedScene" uid="uid://d15fskx1myq4q" path="res://scenes/ui/dialogue_ui.tscn" id="1_4ts40"]
 [ext_resource type="PackedScene" uid="uid://lxsxg7btmnq2" path="res://scenes/player.tscn" id="1_eckfl"]
 [ext_resource type="Shader" path="res://assets/shaders/vignette.gdshader" id="1_juiww"]
 [ext_resource type="Texture2D" uid="uid://bml5gyg0rklyx" path="res://assets/world/ebackground2.png" id="2_drxlm"]
@@ -9,6 +10,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/bg2.gdshader" id="4_hq8ie"]
 [ext_resource type="Shader" path="res://scenes/hexgrid.gdshader" id="5_cjns2"]
 [ext_resource type="Script" path="res://scripts/StoryManager.gd" id="5_k7to8"]
+[ext_resource type="Resource" uid="uid://deoph1kkhwhef" path="res://scripts/dialogues/resources/FirstConversation.tres" id="6_g54dm"]
 [ext_resource type="PackedScene" uid="uid://dndjt2erlthh4" path="res://scenes/crow_death_circle.tscn" id="8_yrqfe"]
 [ext_resource type="PackedScene" uid="uid://c3q0uxppsbpmy" path="res://scenes/crow_obstacle.tscn" id="9_be1cu"]
 [ext_resource type="Texture2D" uid="uid://b6if53t8cjyqs" path="res://assets/world/bakground.png" id="9_bltpd"]
@@ -144,6 +146,12 @@ follow_viewport_enabled = true
 
 [node name="StoryManager" type="Node2D" parent="Foreground"]
 script = ExtResource("5_k7to8")
+initial_dialogue = ExtResource("6_g54dm")
+
+[node name="UI" type="CanvasLayer" parent="Foreground/StoryManager"]
+layer = 2
+
+[node name="DialogueUI" parent="Foreground/StoryManager/UI" instance=ExtResource("1_4ts40")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Foreground/StoryManager"]
 stream = ExtResource("3_x5d51")
