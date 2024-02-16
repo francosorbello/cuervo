@@ -152,8 +152,9 @@ initial_dialogue = ExtResource("6_g54dm")
 layer = 2
 
 [node name="DialogueUI" parent="Foreground/StoryManager/UI" instance=ExtResource("1_4ts40")]
+modulate = Color(1, 1, 1, 0)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Foreground/StoryManager"]
+[node name="SongManager" type="AudioStreamPlayer" parent="Foreground/StoryManager"]
 stream = ExtResource("3_x5d51")
 volume_db = -8.0
 
