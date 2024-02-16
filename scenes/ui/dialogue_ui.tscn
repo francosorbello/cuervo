@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://d15fskx1myq4q"]
+
+[ext_resource type="Script" path="res://scripts/ui/dialogue_ui.gd" id="1_fbp78"]
+[ext_resource type="Resource" uid="uid://deoph1kkhwhef" path="res://scripts/dialogues/resources/FirstConversation.tres" id="2_uloe7"]
+
+[node name="DialogueUI" type="Control" node_paths=PackedStringArray("line_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fbp78")
+line_label = NodePath("HBoxContainer/VBoxContainer/Line")
+initial_dialogue = ExtResource("2_uloe7")
+autostart = true
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.333333)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1000, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Line" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="LineTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="LineTimer" to="." method="_on_line_timer_timeout"]
