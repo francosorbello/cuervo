@@ -16,5 +16,4 @@ func voice_line(line : DialogueLine, line_speed : float):
         play()
         pitch_scale = rand.randf_range(min_pitch,max_pitch)
         await get_tree().create_timer(audio_speed).timeout
-
     pass

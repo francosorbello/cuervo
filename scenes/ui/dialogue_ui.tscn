@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d15fskx1myq4q"]
+[gd_scene load_steps=6 format=3 uid="uid://d15fskx1myq4q"]
 
 [ext_resource type="Script" path="res://scripts/ui/dialogue_ui.gd" id="1_fbp78"]
+[ext_resource type="Theme" uid="uid://pgi26hqiypfb" path="res://assets/ui_theme.tres" id="1_nfnfa"]
 [ext_resource type="Resource" uid="uid://deoph1kkhwhef" path="res://scripts/dialogues/resources/FirstConversation.tres" id="2_ucd1q"]
 [ext_resource type="AudioStream" uid="uid://kcbrpgd5pam1" path="res://assets/sound_effects/crow/talk.mp3" id="3_s7wrd"]
 [ext_resource type="Script" path="res://scripts/ui/TalkAudioPlayer.gd" id="4_abugf"]
@@ -12,10 +13,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_nfnfa")
 script = ExtResource("1_fbp78")
 line_label = NodePath("HBoxContainer/VBoxContainer/Line")
-initial_timer = 0.0
-autostart = true
+initial_timer = 1.5
 initial_dialogue = ExtResource("2_ucd1q")
 
 [node name="BG" type="ColorRect" parent="."]
