@@ -24,3 +24,7 @@ func _physics_process(_delta):
     if(target != null):
         # rotation = global_position.direction_to(target.position).angle()
         look_at(target.global_position)
+
+func toggle(value : bool):
+    visible = value
+    $CollisionShape2D.set_deferred("disabled",not value)

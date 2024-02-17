@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://dehumyati8328"]
+[gd_scene load_steps=27 format=3 uid="uid://dehumyati8328"]
 
 [ext_resource type="PackedScene" uid="uid://d15fskx1myq4q" path="res://scenes/ui/dialogue_ui.tscn" id="1_4ts40"]
 [ext_resource type="PackedScene" uid="uid://lxsxg7btmnq2" path="res://scenes/player.tscn" id="1_eckfl"]
 [ext_resource type="Shader" path="res://assets/shaders/vignette.gdshader" id="1_juiww"]
 [ext_resource type="Texture2D" uid="uid://bml5gyg0rklyx" path="res://assets/world/ebackground2.png" id="2_drxlm"]
+[ext_resource type="PackedScene" uid="uid://c8davym48as2v" path="res://scenes/crow.tscn" id="3_1yonj"]
 [ext_resource type="Texture2D" uid="uid://pav7k525xr62" path="res://assets/world/ebackground.png" id="3_gkd7v"]
 [ext_resource type="Texture2D" uid="uid://dieqgkoihsp1i" path="res://assets/world/bgtest2.png" id="3_rco6b"]
 [ext_resource type="AudioStream" uid="uid://by0t67dg1pyk1" path="res://assets/sound_effects/tomorrow never knows_3.mp3" id="3_x5d51"]
@@ -133,7 +134,16 @@ shader_parameter/SCALE = Vector2(1000, 1000)
 
 [node name="Main" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="Foreground" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="StoryManager" type="Node2D" parent="Foreground"]
+script = ExtResource("5_k7to8")
+initial_dialogue = ExtResource("6_g54dm")
+crow = ExtResource("3_1yonj")
+skip_dialogue = true
+
+[node name="TileMap" type="TileMap" parent="Foreground/StoryManager"]
 tile_set = SubResource("TileSet_b0q7g")
 format = 2
 layer_0/name = "floor"
@@ -141,12 +151,11 @@ layer_0/tile_data = PackedInt32Array(-65541, 131076, 3, 65531, 131076, 3, 131067
 layer_1/name = "limits"
 layer_1/tile_data = PackedInt32Array(1114117, 0, 0, 1179653, 0, 0, 1048581, 0, 0, 983045, 0, 0, 917509, 0, 0, 851973, 0, 0, 786426, 0, 0, 720890, 0, 0, 655354, 0, 0, 589818, 0, 0, 524282, 0, 0, 458746, 0, 0, 393210, 0, 0, 327674, 0, 0, 262138, 0, 0, 196602, 0, 0, -131078, 0, 0, 131066, 0, 0, 65530, 0, 0, -6, 0, 0, -65542, 0, 0, -131077, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 0, 0, -196599, 0, 0, -196598, 0, 0, -196597, 0, 0, -196596, 0, 0, -196595, 0, 0, -196594, 0, 0, -196593, 0, 0, -196592, 0, 0, -196591, 0, 0, -196590, 0, 0, -196589, 0, 0, -196588, 0, 0, -131052, 0, 0, -65516, 0, 0, 20, 0, 0, 65556, 0, 0, 131092, 0, 0, 196628, 0, 0, 262164, 0, 0, 327700, 0, 0, 393236, 0, 0, 458772, 0, 0, 524308, 0, 0, 589844, 0, 0, 655380, 0, 0, 720916, 0, 0, 917512, 0, 0, 983048, 0, 0, 1048584, 0, 0, 1114120, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1245195, 0, 0, 1310731, 0, 0, 1376267, 0, 0, 1441803, 0, 0, 1441802, 0, 0, 1441801, 0, 0, 1441800, 0, 0, 1441799, 0, 0, 1441798, 0, 0, 1441797, 0, 0, 1441796, 0, 0, 1441795, 0, 0, 1441794, 0, 0, 1376258, 0, 0, 1310722, 0, 0, 1245186, 0, 0, 1179650, 0, 0, 1179651, 0, 0, 1179652, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851972, 0, 0, 851971, 0, 0, 851970, 0, 0, 851962, 0, 0, 917498, 0, 0, 917499, 0, 0, 917500, 0, 0, 917501, 0, 0, 917502, 0, 0, 917503, 0, 0, 851968, 0, 0, 851969, 0, 0, 786452, 0, 0, 851988, 0, 0, 851987, 0, 0, 851986, 0, 0, 851985, 0, 0, 851984, 0, 0, 851983, 0, 0, 851982, 0, 0, 851981, 0, 0, 851980, 0, 0)
 
-[node name="Foreground" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
+[node name="CrowTutorial" parent="Foreground/StoryManager" instance=ExtResource("11_oq0dj")]
+position = Vector2(415, 1188)
 
-[node name="StoryManager" type="Node2D" parent="Foreground"]
-script = ExtResource("5_k7to8")
-initial_dialogue = ExtResource("6_g54dm")
+[node name="CrowTutorial2" parent="Foreground/StoryManager" instance=ExtResource("11_oq0dj")]
+position = Vector2(479, 1188)
 
 [node name="UI" type="CanvasLayer" parent="Foreground/StoryManager"]
 layer = 2
@@ -177,7 +186,7 @@ grow_vertical = 2
 position = Vector2(534, 296)
 obstacle_anim_timer = 0.003
 
-[node name="CrowObstacle" parent="Foreground/StoryManager" instance=ExtResource("9_be1cu")]
+[node name="SpeakingCrow" parent="Foreground/StoryManager" instance=ExtResource("9_be1cu")]
 position = Vector2(448, 479)
 rotation = 1.5708
 
@@ -236,10 +245,5 @@ follow_viewport_enabled = true
 [node name="CanvasModulate" type="CanvasModulate" parent="Map"]
 color = Color(1, 0, 0, 0.313726)
 
-[node name="CrowTutorial" parent="." instance=ExtResource("11_oq0dj")]
-position = Vector2(415, 1188)
-
-[node name="CrowTutorial2" parent="." instance=ExtResource("11_oq0dj")]
-position = Vector2(479, 1188)
-
+[connection signal="dialogue_finished" from="Foreground/StoryManager/UI/DialogueUI" to="Foreground/StoryManager" method="_on_dialogue_ui_dialogue_finished"]
 [connection signal="body_entered" from="Foreground/StoryManager/TriggerArea" to="Foreground/StoryManager" method="_on_trigger_area_body_entered"]

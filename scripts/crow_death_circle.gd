@@ -13,6 +13,9 @@ var current_radius: float = 0
 
 @onready var rand : RandomNumberGenerator = RandomNumberGenerator.new() 
 
+func set_start_position(pos : Vector2):
+    global_position = pos
+
 func _ready():
     if autostart:
         start_circle()
