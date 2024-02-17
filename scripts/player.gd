@@ -41,6 +41,8 @@ func _handle_movement(delta: float):
 
 ## handles player aim
 func _handle_aim():
+	if (not _controller_enabled):
+		return
 	var current_aim_position: Vector2 = get_global_mouse_position()
 	current_aim_position = current_aim_position.lerp(previous_aim_position,aim_deceleration) 
 	

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Dialogue" load_steps=6 format=3 uid="uid://deoph1kkhwhef"]
+[gd_resource type="Resource" script_class="Dialogue" load_steps=14 format=3 uid="uid://deoph1kkhwhef"]
 
 [ext_resource type="Script" path="res://scripts/dialogues/Dialogue.gd" id="1_mvjkg"]
 [ext_resource type="Script" path="res://scripts/dialogues/DialogueLine.gd" id="1_whtk2"]
@@ -6,21 +6,80 @@
 [sub_resource type="Resource" id="Resource_vpdqi"]
 script = ExtResource("1_whtk2")
 Line = "Creature of flesh and bone."
-duration = 5.0
+duration = 3.0
 single_row = true
+reset_row = false
 
 [sub_resource type="Resource" id="Resource_uopq5"]
 script = ExtResource("1_whtk2")
 Line = "You come here, seeking for redemption,"
 duration = 3.0
 single_row = false
+reset_row = false
 
 [sub_resource type="Resource" id="Resource_x6w0r"]
 script = ExtResource("1_whtk2")
-Line = "yet you know our judgement will bring you penance."
-duration = 5.0
+Line = "yet you know our judgement"
+duration = 2.0
 single_row = false
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_jowaq"]
+script = ExtResource("1_whtk2")
+Line = "will bring you penance."
+duration = 4.0
+single_row = false
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_fyblq"]
+script = ExtResource("1_whtk2")
+Line = "God shines through our hunger."
+duration = 3.0
+single_row = true
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_yipnv"]
+script = ExtResource("1_whtk2")
+Line = "We cleanse the wicked from sin."
+duration = 3.0
+single_row = false
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_ld5q8"]
+script = ExtResource("1_whtk2")
+Line = "The guardians of all Good."
+duration = 3.0
+single_row = false
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_2r4u2"]
+script = ExtResource("1_whtk2")
+Line = "Our appetite calls for new souls"
+duration = 4.0
+single_row = false
+reset_row = true
+
+[sub_resource type="Resource" id="Resource_0q208"]
+script = ExtResource("1_whtk2")
+Line = "and our patience is running low"
+duration = 3.0
+single_row = false
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_ysllu"]
+script = ExtResource("1_whtk2")
+Line = "So we shall feast on the rotten"
+duration = 3.0
+single_row = false
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_2uhus"]
+script = ExtResource("1_whtk2")
+Line = "[color=red]we shall feast on you.[/color]"
+duration = 3.0
+single_row = true
+reset_row = false
 
 [resource]
 script = ExtResource("1_mvjkg")
-lines = Array[ExtResource("1_whtk2")]([SubResource("Resource_vpdqi"), SubResource("Resource_uopq5"), SubResource("Resource_x6w0r")])
+lines = Array[ExtResource("1_whtk2")]([SubResource("Resource_vpdqi"), SubResource("Resource_uopq5"), SubResource("Resource_x6w0r"), SubResource("Resource_jowaq"), SubResource("Resource_fyblq"), SubResource("Resource_yipnv"), SubResource("Resource_ld5q8"), SubResource("Resource_2r4u2"), SubResource("Resource_0q208"), SubResource("Resource_ysllu"), SubResource("Resource_2uhus")])

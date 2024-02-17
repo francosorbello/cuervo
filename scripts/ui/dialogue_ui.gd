@@ -18,6 +18,8 @@ var current_dialogue : Dialogue
 var current_line : int = 0
 var current_row : int = 0
 
+signal dialogue_finished
+
 func _ready():
 	if(hide_on_start):
 		modulate = Color(0,0,0,0)
@@ -41,7 +43,7 @@ func read_line(line : DialogueLine):
 	
 	if(line_label != null):
 
-		if(current_row == max_rows or line.single_row):
+		if(current_row == max_rows or line.single_row or line.reset_row):
 			line_label.clear()
 			current_row = 0
 		else:
@@ -74,6 +76,7 @@ func next_line():
 	if current_line < len(current_dialogue.lines):
 		read_line(current_dialogue.lines[current_line])
 	else:
+		dialogue_finished.emit()
 		fade_out()
 
 func _on_line_timer_timeout():
