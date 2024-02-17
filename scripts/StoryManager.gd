@@ -8,20 +8,24 @@ extends Node2D
 @export var skip_dialogue : bool = false
 
 var started : bool = false
-var do_spawn_crow : bool = false
 
-func _on_trigger_area_body_entered(body:Node2D):
+
+func start_story(body:Node2D):
 	if(started):
 		return
 	if(body.is_in_group("player")):
+
+		if(body.global_position.y > $TriggerArea.global_position.y):
+			return
+
 		started = true
 		if(skip_dialogue):
 			$UI/DialogueUI.dialogue_finished.emit()
 			return
 		
-		await get_tree().create_timer(start_timer).timeout
+		#await get_tree().create_timer(start_timer).timeout
 
-		$Player.story_zoom_in()
+		$Player.story_zoom_on($Marker2D.global_position)
 		$Player.story_disable_controller()
 		
 		$SongManager.play()
@@ -46,21 +50,17 @@ func _start_attack():
 	# await get_tree().create_timer($CrowDeathCircle.obstacle_anim_timer).timeout
 	$Player.enable_controller()
 	
-	# _spawn_first_crow()
-	do_spawn_crow = true
+	_spawn_first_crow()
 
 func _spawn_first_crow():
-	do_spawn_crow = false
 	var crow_pos = $SpeakingCrow.global_position
 	var _crow = crow.instantiate()
 	add_child(_crow)
-	# await get_tree().process_frame
 	_crow.global_position = crow_pos
-	# await _crow.ready
 	_crow.do_dive()
-	# $SpeakingCrow.queue_free()
-	$SpeakingCrow.toggle(false)
+	$SpeakingCrow.queue_free()
 
-func _physics_process(delta):
-	if(do_spawn_crow):
-		_spawn_first_crow()
+
+func _on_trigger_area_body_exited(body):
+	start_story(body)
+	pass # Replace with function body.

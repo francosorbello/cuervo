@@ -86,4 +86,8 @@ func story_zoom_in():
 func story_zoom_out():
 	$Camera2D.zoom_out()
 	$Camera2D.focus_center()
-	
+
+func story_zoom_on(point : Vector2):
+	print("zooming to point")
+	$Camera2D.zoom_in()
+	$Camera2D.focus_on(point)

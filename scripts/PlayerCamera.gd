@@ -61,3 +61,8 @@ func focus_top():
 
 func focus_center():
 	_focus_animation(0,0,focus_duration)
+
+
+func focus_on(point : Vector2):
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position",point,focus_duration).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
