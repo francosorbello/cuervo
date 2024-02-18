@@ -1,4 +1,5 @@
 extends Marker2D
+## Weapon that spawns bullets. Bullets spawn from its global_position, it doesnt show any sprites.
 
 @export var Bullet: PackedScene
 @export var time_between_shots: float = 0.2
@@ -6,8 +7,11 @@ extends Marker2D
 var current_time_between_shots = 0.0
 var can_shoot: bool = true
 
-signal shot_taken
+signal shot_taken ## signal called when the gun shoots a bullet.
 
+## Shoots a bullet in a direction.
+## [br]
+## [param direction] : The direction the bullet will take.
 func shoot(direction: Vector2):
 	if(can_shoot):
 		var bullet_instance: Node = Bullet.instantiate()
@@ -32,11 +36,12 @@ func _process(delta):
 		current_time_between_shots += delta
 		if(current_time_between_shots > time_between_shots):
 			can_shoot = true
-	
+
+## Creates a muzzle flash effect.	
 func do_muzzle_flash():
 	$PointLight2D.set_deferred("enabled",true)
 	$Timer.start()
 
-
+# disables the muzzle flash.
 func _on_timer_timeout():
 	$PointLight2D.set_deferred("enabled",false)

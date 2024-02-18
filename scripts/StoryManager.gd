@@ -1,15 +1,17 @@
 extends Node2D
+## Node that manages all story related tasks, like dialogues, spawning, etc.
 
-@export var start_timer : float = 0.5
-@export var initial_dialogue : Dialogue
+# @export var start_timer : float = 0.5
+@export var initial_dialogue : Dialogue ## Dialogue to display on first game loop.
 @export var crow : PackedScene 
 
 @export_category("Debug")
-@export var skip_dialogue : bool = false
+@export var skip_dialogue : bool = false ## skips the dialogue and goes directly to fighting.
 
 var started : bool = false
 var story_finished : bool = false
 
+## Starts the story.
 func start_story(body:Node2D):
     if(started):
         return
@@ -32,7 +34,6 @@ func start_story(body:Node2D):
 
         $UI/DialogueUI.start_dialogue(initial_dialogue)
         
-
 func test_zoom_out():
     await get_tree().create_timer(3).timeout
     $Player.story_zoom_out()
@@ -52,7 +53,7 @@ func _start_attack():
     $Player.enable_controller()
     $Player.story_zoom_out()
     
-
+## Spawns a crow in the position of the crow that talks to the player.
 func _spawn_first_crow():
     story_finished = false
     var crow_pos = $SpeakingCrow.global_position
@@ -72,6 +73,7 @@ func _physics_process(_delta):
     if(story_finished):
         _spawn_first_crow()
 
+## Toggles tutorial obstacles, like the map limits.
 func toggle_obstacles(value : bool):
     $TileMap.set_layer_enabled(1, value)
 

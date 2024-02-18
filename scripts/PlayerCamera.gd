@@ -1,4 +1,10 @@
 extends Camera2D
+## Controls the player camera.
+## 
+## Supports: [br]
+## - Zoom in/out [br]
+## - Camera shake [br]
+## - Moving the camera 
 
 @export var noise_shake_speed: float = 30
 @export var noise_shake_strength: float = 60.0

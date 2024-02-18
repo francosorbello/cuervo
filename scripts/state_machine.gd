@@ -1,6 +1,15 @@
 class_name StateMachine extends Node
+## Implementation of a state machine.
+##
+## Each state is a separate node that is parented to this node. Transitions are done by the name of the node. [br]
+## For example, if your [class State] node is called "DiveState", transitioning to that node would look as: 
+## [codeblock]
+## func do_dive():
+## 	transition.to("DiveState")
+## [/codeblock]
 
-@export var initial_state : State
+
+@export var initial_state : State ## State the machine starts on.
 
 var current_state : State
 
@@ -13,6 +22,9 @@ func _ready():
 	current_state = initial_state
 	current_state.enter()
 
+## Transition to a new state.
+## [br]
+## [param target_state_name] : Name of the state.
 func transition_to(target_state_name: String):
 	if(not current_state.can_exit()):
 		return

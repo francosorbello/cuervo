@@ -1,4 +1,10 @@
 extends CharacterBody2D
+## Player character.
+##
+## Handles: [br]
+## - Movement [br]
+## - Shoot [br]
+## - Camera
 
 @export_category("Character movement")
 @export var speed = 400.0 ## character movement speed
