@@ -1,5 +1,7 @@
 extends Node
 
+## Object that transitions between different enemy animations.
+
 @export var animation_player : AnimationPlayer
 
 func move():

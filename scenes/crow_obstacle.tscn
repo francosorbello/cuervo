@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3q0uxppsbpmy"]
 
+[ext_resource type="Script" path="res://scripts/crow/crow_obstacle.gd" id="1_0f2h3"]
 [ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_3mcl4"]
-[ext_resource type="Script" path="res://scenes/crow_obstacle.gd" id="1_s2huw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xkkt"]
 size = Vector2(34, 34)
@@ -48,7 +48,7 @@ _data = {
 scale = Vector2(2, 2)
 collision_layer = 7
 collision_mask = 7
-script = ExtResource("1_s2huw")
+script = ExtResource("1_0f2h3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708

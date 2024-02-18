@@ -1,11 +1,12 @@
 extends State
 
 @export var dive_speed : float = 300
-@export var dive_threshold: float = 40
+@export var move_threshold: float = 40 # Enemy will transition to moving if their distance is lower than this threshold 
 
 var last_player_position : Vector2
 
 func enter():
+    # store last player position, as the enemy will dive towards there
     last_player_position = state_owner.get_player().global_position
 
 func pyhsics_update(delta):
@@ -20,4 +21,4 @@ func pyhsics_update(delta):
 
 func should_move() -> bool:
     var distance = state_owner.global_position.distance_to(last_player_position)
-    return distance < dive_threshold
+    return distance < move_threshold

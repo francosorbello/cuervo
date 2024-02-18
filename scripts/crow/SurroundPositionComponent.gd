@@ -1,6 +1,7 @@
 extends Node
+## Component that helps enemies surround an entity.
 
-@export var surround_radius: float = 20
+@export var surround_radius: float = 20 ## Radius around the entity to surround.
 
 var random_angle : float
 @onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
@@ -10,12 +11,11 @@ func _ready():
     random_angle = rng.randf_range(-1,1)
     pass
 
-func get_random_circle_position(target: Vector2, do_randomize: bool = false) -> Vector2:
+## Returns a random position around an entity.
+## [br]
+## [param target] : the target to surround. [br]
+func get_random_circle_position(target: Vector2) -> Vector2:
     
-    if do_randomize:
-        rng.randomize()
-        random_angle = rng.randf_range(-1,1)
-
     var angle = random_angle * PI * 2
 
     var x = target.x + cos(angle) * surround_radius
