@@ -104,3 +104,6 @@ func reset():
         obstacle.queue_free()
     obstacles.clear()
     await get_tree().process_frame
+
+func get_spawn_anim_duration() -> float:
+    return obstacle_amount * obstacle_anim_timer

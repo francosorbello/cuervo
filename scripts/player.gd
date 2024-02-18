@@ -35,6 +35,7 @@ func get_input():
 func reset():
 	global_position = initial_position
 	can_take_damage = true
+	$PlayerAudioController.reset()
 	$HealthComponent.reset()
 
 func _physics_process(delta):

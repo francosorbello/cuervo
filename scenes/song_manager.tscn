@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bds3qf37v2woa"]
+
+[ext_resource type="AudioStream" uid="uid://by0t67dg1pyk1" path="res://assets/sound_effects/song_full.mp3" id="1_1hw4i"]
+[ext_resource type="Script" path="res://scripts/SongManager.gd" id="2_qmrk0"]
+[ext_resource type="AudioStream" uid="uid://bg0qrfgcjtca" path="res://assets/sound_effects/song_combat.mp3" id="3_brnt8"]
+
+[node name="SongManager" type="AudioStreamPlayer"]
+volume_db = -8.0
+script = ExtResource("2_qmrk0")
+full_song = ExtResource("1_1hw4i")
+battle_song = ExtResource("3_brnt8")

@@ -42,6 +42,22 @@ func start_dialogue(dialogue: Dialogue):
 	current_line = 0
 	read_line(current_dialogue.lines[0])
 
+func start_random_dialogue(dialogue: Dialogue):
+	if (dialogue == null):
+		return
+		
+	var rand = RandomNumberGenerator.new()
+	rand.randomize()
+	var selected_index : int = rand.randi_range(0,len(dialogue.lines)-1)
+	
+	# create new dialogue and use normal system
+	# not the best implementation but the quickest
+	var new_dialogue = Dialogue.new()
+	new_dialogue.lines.append(dialogue.lines[selected_index])
+
+	start_dialogue(new_dialogue)
+	pass
+
 ## Displays a dialogue line.
 ## [br]
 ## [param line] : the line to display.

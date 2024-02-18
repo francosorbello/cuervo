@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dehumyati8328"]
+[gd_scene load_steps=29 format=3 uid="uid://dehumyati8328"]
 
 [ext_resource type="PackedScene" uid="uid://d15fskx1myq4q" path="res://scenes/ui/dialogue_ui.tscn" id="1_4ts40"]
 [ext_resource type="PackedScene" uid="uid://lxsxg7btmnq2" path="res://scenes/player.tscn" id="1_eckfl"]
@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bml5gyg0rklyx" path="res://assets/world/ebackground2.png" id="2_drxlm"]
 [ext_resource type="PackedScene" uid="uid://c8davym48as2v" path="res://scenes/crow.tscn" id="3_1yonj"]
 [ext_resource type="Texture2D" uid="uid://pav7k525xr62" path="res://assets/world/ebackground.png" id="3_gkd7v"]
+[ext_resource type="Resource" uid="uid://b3t4566rkrqll" path="res://scripts/dialogues/resources/Taunts.tres" id="3_l0rc3"]
 [ext_resource type="Texture2D" uid="uid://dieqgkoihsp1i" path="res://assets/world/bgtest2.png" id="3_rco6b"]
-[ext_resource type="AudioStream" uid="uid://by0t67dg1pyk1" path="res://assets/sound_effects/song_full.mp3" id="3_x5d51"]
 [ext_resource type="Shader" path="res://assets/shaders/bg2.gdshader" id="4_hq8ie"]
 [ext_resource type="Shader" path="res://assets/shaders/hexgrid.gdshader" id="5_cjns2"]
 [ext_resource type="Script" path="res://scripts/StoryManager.gd" id="5_k7to8"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cvrrroqptwtsc" path="res://scenes/game_ui.tscn" id="9_8tsmg"]
 [ext_resource type="PackedScene" uid="uid://c3q0uxppsbpmy" path="res://scenes/crow_obstacle.tscn" id="9_be1cu"]
 [ext_resource type="Texture2D" uid="uid://b6if53t8cjyqs" path="res://assets/world/bakground.png" id="9_bltpd"]
+[ext_resource type="PackedScene" uid="uid://bds3qf37v2woa" path="res://scenes/song_manager.tscn" id="11_ji2tr"]
 [ext_resource type="PackedScene" uid="uid://b53o7ht1ufjhg" path="res://scenes/crow_tutorial.tscn" id="11_oq0dj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w5amq"]
@@ -141,8 +142,8 @@ follow_viewport_enabled = true
 [node name="StoryManager" type="Node2D" parent="Foreground"]
 script = ExtResource("5_k7to8")
 initial_dialogue = ExtResource("6_g54dm")
+random_dialogue = ExtResource("3_l0rc3")
 crow = ExtResource("3_1yonj")
-skip_dialogue = true
 
 [node name="TileMap" type="TileMap" parent="Foreground/StoryManager"]
 tile_set = SubResource("TileSet_b0q7g")
@@ -169,9 +170,7 @@ layer = 8
 
 [node name="GameUI" parent="Foreground/StoryManager/UI/GameUI" instance=ExtResource("9_8tsmg")]
 
-[node name="SongManager" type="AudioStreamPlayer" parent="Foreground/StoryManager"]
-stream = ExtResource("3_x5d51")
-volume_db = -8.0
+[node name="SongManager" parent="Foreground/StoryManager" instance=ExtResource("11_ji2tr")]
 
 [node name="Player" parent="Foreground/StoryManager" instance=ExtResource("1_eckfl")]
 position = Vector2(449, 949)

@@ -3,6 +3,7 @@ extends Node2D
 
 # @export var start_timer : float = 0.5
 @export var initial_dialogue : Dialogue ## Dialogue to display on first game loop.
+@export var random_dialogue : Dialogue ## random lines that the enemy says when player dies.
 @export var crow : PackedScene 
 
 @export_category("Debug")
@@ -10,6 +11,8 @@ extends Node2D
 
 var started : bool = false
 var story_finished : bool = false
+
+var first_play : bool = true
 
 ## Starts the story.
 func start_story(body:Node2D):
@@ -31,9 +34,11 @@ func start_story(body:Node2D):
 		$Player.story_zoom_on($Marker2D.global_position)
 		$Player.story_disable_controller()
 		
-		$SongManager.play()
-
-		$UI/DialogueUI.start_dialogue(initial_dialogue)
+		if(first_play):
+			$SongManager.play_full()
+			$UI/DialogueUI.start_dialogue(initial_dialogue)
+		else:
+			$UI/DialogueUI.start_random_dialogue(random_dialogue)
 		
 func test_zoom_out():
 	await get_tree().create_timer(3).timeout
@@ -44,12 +49,14 @@ func _on_dialogue_ui_dialogue_finished():
 	_start_attack()
 	pass # Replace with function body.
 
-
 func _start_attack():
 	toggle_obstacles(false)
 	$CrowDeathCircle.set_start_position($Player.global_position)
 	$CrowDeathCircle.start_circle()
-	# await get_tree().create_timer($CrowDeathCircle.obstacle_anim_timer).timeout
+
+	if(not first_play):
+		$SongManager.play_battle($CrowDeathCircle.get_spawn_anim_duration())
+
 	$Player.enable_controller()
 	$Player.story_zoom_out()
 
@@ -89,8 +96,11 @@ func _on_player_player_died():
 	# $UI/GameUI.transition_in()
 
 func reset_game():
+	if(first_play):
+		first_play = false
 	started = false
-	
+	$SongManager.stop_music()
+
 	await $UI/GameUI/GameUI.toggle(true)
 	
 	var first_node = get_node_or_null("FirstCrow")

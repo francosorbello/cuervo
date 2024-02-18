@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=6 format=3 uid="uid://b3t4566rkrqll"]
+
+[ext_resource type="Script" path="res://scripts/dialogues/Dialogue.gd" id="1_lx86h"]
+[ext_resource type="Script" path="res://scripts/dialogues/DialogueLine.gd" id="1_od3eq"]
+
+[sub_resource type="Resource" id="Resource_sjefx"]
+script = ExtResource("1_od3eq")
+Line = "Feed our hunger."
+duration = 3.0
+single_row = true
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_w830h"]
+script = ExtResource("1_od3eq")
+Line = "Fighting is futile."
+duration = 3.0
+single_row = true
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_ys0e6"]
+script = ExtResource("1_od3eq")
+Line = "We cleanse the wicked from sin."
+duration = 3.0
+single_row = true
+reset_row = false
+
+[resource]
+script = ExtResource("1_lx86h")
+lines = Array[ExtResource("1_od3eq")]([SubResource("Resource_sjefx"), SubResource("Resource_w830h"), SubResource("Resource_ys0e6")])

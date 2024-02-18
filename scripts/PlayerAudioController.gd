@@ -12,3 +12,6 @@ func play_pain_sound():
 func play_death_sound():
 	bus = "PlayerDeath"
 	play_pain_sound()
+
+func reset():
+	bus = "Master"
