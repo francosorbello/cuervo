@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://lxsxg7btmnq2"]
+[gd_scene load_steps=12 format=3 uid="uid://lxsxg7btmnq2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_3v710"]
 [ext_resource type="Texture2D" uid="uid://bghse1b70spb4" path="res://assets/Spritesheet/spritesheet_characters.png" id="1_y7anu"]
+[ext_resource type="PackedScene" uid="uid://eead018oatl1" path="res://scenes/health_component.tscn" id="2_ajf5b"]
 [ext_resource type="PackedScene" uid="uid://dxhcerk0300uh" path="res://scenes/crosshair.tscn" id="2_i1vvn"]
 [ext_resource type="PackedScene" uid="uid://dnxhaxm7xs7mx" path="res://scenes/gun.tscn" id="3_rjc10"]
 [ext_resource type="Script" path="res://scripts/PlayerAudioController.gd" id="5_yho4a"]
@@ -21,6 +22,8 @@ script = ExtResource("1_3v710")
 speed = 200.0
 movement_deceleration = 0.6
 Gun = NodePath("Gun")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_ajf5b")]
 
 [node name="Crosshair" parent="." instance=ExtResource("2_i1vvn")]
 
@@ -48,4 +51,5 @@ script = ExtResource("8_2q0li")
 noise_shake_speed = 10.0
 noise_shake_strength = 15.0
 
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
 [connection signal="shot_taken" from="Gun" to="." method="_on_gun_shot_taken"]

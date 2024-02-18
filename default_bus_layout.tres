@@ -1,0 +1,19 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://bbsyafneen6yh"]
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_bkgd4"]
+resource_name = "Delay"
+tap1_level_db = -4.0
+tap1_pan = 0.0
+tap2_level_db = -8.0
+tap2_pan = 0.0
+feedback_lowpass = 80.0
+
+[resource]
+bus/1/name = &"PlayerDeath"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectDelay_bkgd4")
+bus/1/effect/0/enabled = true

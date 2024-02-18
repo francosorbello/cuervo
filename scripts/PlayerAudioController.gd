@@ -8,3 +8,7 @@ func play_pain_sound():
 	var selected_sound = pain_sounds.pick_random()
 	stream = selected_sound
 	play()
+
+func play_death_sound():
+	bus = "PlayerDeath"
+	play_pain_sound()

@@ -17,6 +17,7 @@ extends CharacterBody2D
 var previous_motion: Vector2 = Vector2.ZERO
 var previous_aim_position: Vector2 
 var _controller_enabled : bool = true
+var can_take_damage : bool = true
 
 ## gets player input and transforms it to velocity
 func get_input():
@@ -64,7 +65,10 @@ func _shoot():
 		Gun.shoot(get_global_mouse_position())
 	
 func take_damage(damage):
+	if(not can_take_damage):
+		return
 	$PlayerAudioController.play_pain_sound()
+	$HealthComponent.take_damage(damage)
 
 func _on_gun_shot_taken():
 	$Camera2D.do_shake()
@@ -95,3 +99,10 @@ func story_zoom_out():
 func story_zoom_on(point : Vector2):
 	$Camera2D.zoom_in()
 	$Camera2D.focus_on(point)
+
+func _on_health_component_on_death():
+	$PlayerAudioController.play_death_sound()
+	#$Camera2D.zoom_in()
+	disable_controller()
+	can_take_damage = false
+	pass # Replace with function body.

@@ -77,8 +77,8 @@ func _physics_process(_delta):
 func toggle_obstacles(value : bool):
     $TileMap.set_layer_enabled(1, value)
 
-    if($CrowTutorial != null):
+    if(is_instance_valid($CrowTutorial)):
         $CrowTutorial.queue_free()
     
-    if($CrowTutorial2 != null):
+    if(is_instance_valid($CrowTutorial2)):
         $CrowTutorial2.queue_free()
