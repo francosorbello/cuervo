@@ -41,6 +41,13 @@ func start_circle():
     $CrowSpawner.wave_finished.connect(on_wave_finished)
     spawn_crows()
     $CrowSpawner.start_timer()
+    destroy_obstacles()
+    
+
+func test_kill_obstacles():
+    await get_tree().create_timer(3).timeout
+    destroy_obstacles()
+    
 
 ## Transforms an index to a position in the borders of a cirlce.
 ## [br]
@@ -77,9 +84,14 @@ func _on_wave_timer_timeout():
 ## Spawns enemies from the borders of the circle.
 func spawn_crows():
     var obstacle_positions : Array = []
-
     for obstacle in obstacles:
         obstacle_positions.append(obstacle.global_position)
 
     $CrowSpawner.spawn_crows(obstacle_positions)
 
+func destroy_obstacles():
+    current_radius = 0
+    for obstacle in obstacles:
+        obstacle.kill_obstacle()
+    obstacles.clear()
+    await get_tree().process_frame

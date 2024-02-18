@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dehumyati8328"]
+[gd_scene load_steps=28 format=3 uid="uid://dehumyati8328"]
 
 [ext_resource type="PackedScene" uid="uid://d15fskx1myq4q" path="res://scenes/ui/dialogue_ui.tscn" id="1_4ts40"]
 [ext_resource type="PackedScene" uid="uid://lxsxg7btmnq2" path="res://scenes/player.tscn" id="1_eckfl"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/StoryManager.gd" id="5_k7to8"]
 [ext_resource type="Resource" uid="uid://deoph1kkhwhef" path="res://scripts/dialogues/resources/FirstConversation.tres" id="6_g54dm"]
 [ext_resource type="PackedScene" uid="uid://dndjt2erlthh4" path="res://scenes/crow_death_circle.tscn" id="8_yrqfe"]
+[ext_resource type="PackedScene" uid="uid://cvrrroqptwtsc" path="res://scenes/game_ui.tscn" id="9_8tsmg"]
 [ext_resource type="PackedScene" uid="uid://c3q0uxppsbpmy" path="res://scenes/crow_obstacle.tscn" id="9_be1cu"]
 [ext_resource type="Texture2D" uid="uid://b6if53t8cjyqs" path="res://assets/world/bakground.png" id="9_bltpd"]
 [ext_resource type="PackedScene" uid="uid://b53o7ht1ufjhg" path="res://scenes/crow_tutorial.tscn" id="11_oq0dj"]
@@ -160,6 +161,8 @@ position = Vector2(479, 1188)
 [node name="UI" type="CanvasLayer" parent="Foreground/StoryManager"]
 layer = 2
 
+[node name="GameUI" parent="Foreground/StoryManager/UI" instance=ExtResource("9_8tsmg")]
+
 [node name="DialogueUI" parent="Foreground/StoryManager/UI" instance=ExtResource("1_4ts40")]
 modulate = Color(1, 1, 1, 0)
 
@@ -250,4 +253,5 @@ follow_viewport_enabled = true
 color = Color(1, 0, 0, 0.313726)
 
 [connection signal="dialogue_finished" from="Foreground/StoryManager/UI/DialogueUI" to="Foreground/StoryManager" method="_on_dialogue_ui_dialogue_finished"]
+[connection signal="player_died" from="Foreground/StoryManager/Player" to="Foreground/StoryManager" method="_on_player_player_died"]
 [connection signal="body_exited" from="Foreground/StoryManager/TriggerArea" to="Foreground/StoryManager" method="_on_trigger_area_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3q0uxppsbpmy"]
+[gd_scene load_steps=8 format=3 uid="uid://c3q0uxppsbpmy"]
 
 [ext_resource type="Script" path="res://scripts/crow/crow_obstacle.gd" id="1_0f2h3"]
 [ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="1_3mcl4"]
@@ -38,9 +38,39 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_m43cp"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o1j3w"]
 _data = {
 "RESET": SubResource("Animation_d5i44"),
+"die": SubResource("Animation_m43cp"),
 "idle": SubResource("Animation_lmr1t")
 }
 

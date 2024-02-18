@@ -19,12 +19,19 @@ var previous_aim_position: Vector2
 var _controller_enabled : bool = true
 var can_take_damage : bool = true
 
+signal player_died
+
 ## gets player input and transforms it to velocity
 func get_input():
 	if(not _controller_enabled):
 		return
 	var input_dir = Input.get_vector("left", "right", "up", "down").normalized()
 	velocity = input_dir * speed
+
+func reset():
+	can_take_damage = true
+	enable_controller()
+	$HealthComponent.reset()
 
 func _physics_process(delta):
 	get_input()
@@ -105,4 +112,5 @@ func _on_health_component_on_death():
 	#$Camera2D.zoom_in()
 	disable_controller()
 	can_take_damage = false
+	player_died.emit()
 	pass # Replace with function body.

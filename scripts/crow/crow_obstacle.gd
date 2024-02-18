@@ -31,3 +31,6 @@ func _physics_process(_delta):
 func toggle(value : bool):
     visible = value
     $CollisionShape2D.set_deferred("disabled",not value)
+
+func kill_obstacle():
+    $AnimationPlayer.play("die")
