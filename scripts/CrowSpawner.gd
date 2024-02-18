@@ -14,7 +14,7 @@ var current_time : float = 0
 signal wave_finished
 
 func _ready():
-    current_amount = initial_amount
+    current_amount = get_spawn_amount()
 
 func spawn_crows(spawn_points : Array):
     for i in range(0,current_amount):
@@ -45,10 +45,10 @@ func get_spawn_amount() -> int:
         sum_amount = floori(lerp(initial_amount,max_amount,current_time/max_point_timer))
     else:
         sum_amount = floori(lerp(max_amount,initial_amount,current_time/max_point_timer))
+    print(sum_amount)
     return sum_amount
 
 func _on_max_point_timer_timeout():
-    print("max point reached")
     max_point_reached = true
     current_time = 0
 
@@ -56,4 +56,5 @@ func _process(delta):
     current_time += delta
 
 func start_timer():
+    current_time = 0
     $MaxPointTimer.start(max_point_timer)

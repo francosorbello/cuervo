@@ -14,8 +14,6 @@ func _ready():
 func setup(pos: Vector2, _target: Node2D = null):
     target = _target
     global_position = pos
-    # position = pos
-    # print(global_position.direction_to(target.position))
 
 func set_pos(pos: Vector2):
     global_position = pos

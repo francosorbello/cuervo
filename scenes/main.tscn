@@ -141,7 +141,6 @@ follow_viewport_enabled = true
 script = ExtResource("5_k7to8")
 initial_dialogue = ExtResource("6_g54dm")
 crow = ExtResource("3_1yonj")
-skip_dialogue = true
 
 [node name="TileMap" type="TileMap" parent="Foreground/StoryManager"]
 tile_set = SubResource("TileSet_b0q7g")
@@ -184,7 +183,7 @@ grow_vertical = 2
 
 [node name="CrowDeathCircle" parent="Foreground/StoryManager" instance=ExtResource("8_yrqfe")]
 position = Vector2(534, 296)
-reduce_rate = 6.0
+reduce_rate = 5.5
 obstacle_anim_timer = 0.06
 
 [node name="SpeakingCrow" parent="Foreground/StoryManager" instance=ExtResource("9_be1cu")]

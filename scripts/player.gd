@@ -58,7 +58,6 @@ func _shoot():
 		Gun.shoot(get_global_mouse_position())
 	
 func take_damage(damage):
-	# print(damage)
 	$PlayerAudioController.play_pain_sound()
 
 func _on_gun_shot_taken():
@@ -88,6 +87,5 @@ func story_zoom_out():
 	$Camera2D.focus_center()
 
 func story_zoom_on(point : Vector2):
-	print("zooming to point")
 	$Camera2D.zoom_in()
 	$Camera2D.focus_on(point)
