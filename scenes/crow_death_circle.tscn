@@ -16,6 +16,9 @@ CrowObstacle = ExtResource("2_l8cle")
 script = ExtResource("4_jrtx0")
 Crow = ExtResource("3_vu0wf")
 
+[node name="MaxPointTimer" type="Timer" parent="CrowSpawner"]
+one_shot = true
+
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -24,4 +27,5 @@ stream = ExtResource("5_53pup")
 volume_db = -8.707
 pitch_scale = 0.8
 
+[connection signal="timeout" from="CrowSpawner/MaxPointTimer" to="CrowSpawner" method="_on_max_point_timer_timeout"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

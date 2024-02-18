@@ -8,7 +8,7 @@ extends Node2D
 @export var skip_dialogue : bool = false
 
 var started : bool = false
-
+var story_finished : bool = false
 
 func start_story(body:Node2D):
 	if(started):
@@ -39,6 +39,7 @@ func test_zoom_out():
 
 
 func _on_dialogue_ui_dialogue_finished():
+	story_finished = true
 	_start_attack()
 	pass # Replace with function body.
 
@@ -50,17 +51,22 @@ func _start_attack():
 	# await get_tree().create_timer($CrowDeathCircle.obstacle_anim_timer).timeout
 	$Player.enable_controller()
 	
-	_spawn_first_crow()
 
 func _spawn_first_crow():
+	story_finished = false
 	var crow_pos = $SpeakingCrow.global_position
 	var _crow = crow.instantiate()
 	add_child(_crow)
 	_crow.global_position = crow_pos
 	_crow.do_dive()
-	$SpeakingCrow.queue_free()
+	
+	$SpeakingCrow.toggle(false)
 
 
 func _on_trigger_area_body_exited(body):
 	start_story(body)
 	pass # Replace with function body.
+
+func _physics_process(_delta):
+	if(story_finished):
+		_spawn_first_crow()

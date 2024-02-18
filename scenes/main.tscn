@@ -141,6 +141,7 @@ follow_viewport_enabled = true
 script = ExtResource("5_k7to8")
 initial_dialogue = ExtResource("6_g54dm")
 crow = ExtResource("3_1yonj")
+skip_dialogue = true
 
 [node name="TileMap" type="TileMap" parent="Foreground/StoryManager"]
 tile_set = SubResource("TileSet_b0q7g")

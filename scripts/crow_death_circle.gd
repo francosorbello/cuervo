@@ -26,7 +26,7 @@ func start_circle():
     for crow_index in range(0,obstacle_amount):
         $SpawnAudioPlayer.play()
         await get_tree().create_timer(obstacle_anim_timer).timeout
-        
+
         var obstacle = CrowObstacle.instantiate()
         add_child(obstacle)
         
@@ -35,6 +35,7 @@ func start_circle():
     
     $CrowSpawner.wave_finished.connect(on_wave_finished)
     spawn_crows()
+    $CrowSpawner.start_timer()
 
 func index_to_position(index : int, radius: float) -> Vector2:
     var angle_grad = (360 / float(obstacle_amount)) * index
@@ -69,3 +70,4 @@ func spawn_crows():
         obstacle_positions.append(obstacle.global_position)
 
     $CrowSpawner.spawn_crows(obstacle_positions)
+

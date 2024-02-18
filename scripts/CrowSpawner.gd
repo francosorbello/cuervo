@@ -1,11 +1,15 @@
 extends Node2D
 
 @export var initial_amount: int = 3
+@export var max_amount: int = 5
 @export var Crow : PackedScene
+@export var max_point_timer : float = 30
 
 @onready var rand : RandomNumberGenerator = RandomNumberGenerator.new()
 var current_amount : int
 var killed_crows : int = 0
+var max_point_reached : bool = false
+var current_time : float = 0
 
 signal wave_finished
 
@@ -36,4 +40,20 @@ func on_crow_death():
     pass
 
 func get_spawn_amount() -> int:
-    return current_amount + 2
+    var sum_amount : int = 0
+    if(not max_point_reached):
+        sum_amount = floori(lerp(initial_amount,max_amount,current_time/max_point_timer))
+    else:
+        sum_amount = floori(lerp(max_amount,initial_amount,current_time/max_point_timer))
+    return sum_amount
+
+func _on_max_point_timer_timeout():
+    print("max point reached")
+    max_point_reached = true
+    current_time = 0
+
+func _process(delta):
+    current_time += delta
+
+func start_timer():
+    $MaxPointTimer.start(max_point_timer)
