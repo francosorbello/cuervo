@@ -1,5 +1,6 @@
 extends Control
 
+@export var auto_hide : bool = true
 @export var random_dialogues : Dialogue
 
 @export_category("Animations")
@@ -9,8 +10,10 @@ extends Control
 @onready var rand : RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready():
+    # display_random_dialogue()
     # hide on start
-    modulate = Color(1,1,1,0)
+    if(auto_hide):
+        modulate = Color(1,1,1,0)
 
 func toggle(value : bool):
     # visible = value

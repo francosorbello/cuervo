@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvrrroqptwtsc"]
+[gd_scene load_steps=10 format=3 uid="uid://cvrrroqptwtsc"]
 
 [ext_resource type="Script" path="res://scripts/ui/game_ui.gd" id="1_345hd"]
 [ext_resource type="Theme" uid="uid://pgi26hqiypfb" path="res://assets/ui_theme.tres" id="1_c4tns"]
 [ext_resource type="Script" path="res://scripts/dialogues/DialogueLine.gd" id="3_ey4ch"]
 [ext_resource type="Script" path="res://scripts/dialogues/Dialogue.gd" id="4_j5uvf"]
+[ext_resource type="Texture2D" uid="uid://ctmykq576f04j" path="res://assets/world/UI_BG.png" id="5_w28s1"]
 
 [sub_resource type="Resource" id="Resource_ysf6a"]
 script = ExtResource("3_ey4ch")
@@ -41,14 +42,15 @@ theme = ExtResource("1_c4tns")
 script = ExtResource("1_345hd")
 random_dialogues = SubResource("Resource_4uv74")
 
-[node name="TransitionColor" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.494118, 0, 0, 1)
+texture = ExtResource("5_w28s1")
+stretch_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
