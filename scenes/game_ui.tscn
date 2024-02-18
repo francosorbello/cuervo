@@ -1,7 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvrrroqptwtsc"]
+[gd_scene load_steps=9 format=3 uid="uid://cvrrroqptwtsc"]
 
 [ext_resource type="Script" path="res://scripts/ui/game_ui.gd" id="1_345hd"]
 [ext_resource type="Theme" uid="uid://pgi26hqiypfb" path="res://assets/ui_theme.tres" id="1_c4tns"]
+[ext_resource type="Script" path="res://scripts/dialogues/DialogueLine.gd" id="3_ey4ch"]
+[ext_resource type="Script" path="res://scripts/dialogues/Dialogue.gd" id="4_j5uvf"]
+
+[sub_resource type="Resource" id="Resource_ysf6a"]
+script = ExtResource("3_ey4ch")
+Line = "[Your death brings us satisfaction."
+duration = 5.0
+single_row = false
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_7w01v"]
+script = ExtResource("3_ey4ch")
+Line = "We are Righteous. "
+duration = 5.0
+single_row = false
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_adts8"]
+script = ExtResource("3_ey4ch")
+Line = "A Holy Feast."
+duration = 5.0
+single_row = false
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_4uv74"]
+script = ExtResource("4_j5uvf")
+lines = Array[ExtResource("3_ey4ch")]([SubResource("Resource_ysf6a"), SubResource("Resource_7w01v"), SubResource("Resource_adts8")])
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -12,9 +39,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_c4tns")
 script = ExtResource("1_345hd")
+random_dialogues = SubResource("Resource_4uv74")
 
 [node name="TransitionColor" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +51,6 @@ grow_vertical = 2
 color = Color(0.494118, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,14 +59,21 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+[node name="RandomLineLabel" type="RichTextLabel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]Your death brings us satisfaction. [/center]"
+text = "[center]Test. [/center]"
 fit_content = true
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+ratio = 2.0
+
+[node name="Button" type="Button" parent="VBoxContainer/AspectRatioContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Retry"
+
+[connection signal="pressed" from="VBoxContainer/AspectRatioContainer/Button" to="." method="_on_button_pressed"]

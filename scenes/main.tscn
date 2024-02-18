@@ -161,10 +161,13 @@ position = Vector2(479, 1188)
 [node name="UI" type="CanvasLayer" parent="Foreground/StoryManager"]
 layer = 2
 
-[node name="GameUI" parent="Foreground/StoryManager/UI" instance=ExtResource("9_8tsmg")]
-
 [node name="DialogueUI" parent="Foreground/StoryManager/UI" instance=ExtResource("1_4ts40")]
 modulate = Color(1, 1, 1, 0)
+
+[node name="GameUI" type="CanvasLayer" parent="Foreground/StoryManager/UI"]
+layer = 8
+
+[node name="GameUI" parent="Foreground/StoryManager/UI/GameUI" instance=ExtResource("9_8tsmg")]
 
 [node name="SongManager" type="AudioStreamPlayer" parent="Foreground/StoryManager"]
 stream = ExtResource("3_x5d51")

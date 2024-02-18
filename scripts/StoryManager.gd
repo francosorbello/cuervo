@@ -58,6 +58,7 @@ func _spawn_first_crow():
 	story_finished = false
 	var crow_pos = $SpeakingCrow.global_position
 	var _crow = crow.instantiate()
+	_crow.name = "FirstCrow"
 	add_child(_crow)
 	_crow.global_position = crow_pos
 	_crow.do_dive()
@@ -89,12 +90,19 @@ func _on_player_player_died():
 
 func reset_game():
 	started = false
-	await $UI/GameUI.transition_in()
+	
+	await $UI/GameUI/GameUI.toggle(true)
+	
+	var first_node = get_node_or_null("FirstCrow")
+	if(first_node):
+		first_node.queue_free()
+	
 	$SpeakingCrow.toggle(true)
 	$CrowDeathCircle.reset()
+	
 	$Player.reset()
+	
 	toggle_obstacles(true)
-	await $UI/GameUI.transition_out()
 	
 	$Player.enable_controller()
 	

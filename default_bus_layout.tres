@@ -1,12 +1,26 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://bbsyafneen6yh"]
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://bbsyafneen6yh"]
 
 [sub_resource type="AudioEffectDelay" id="AudioEffectDelay_bkgd4"]
 resource_name = "Delay"
-tap1_level_db = -4.0
+tap1_active = false
 tap1_pan = 0.0
-tap2_level_db = -8.0
+tap2_active = false
 tap2_pan = 0.0
-feedback_lowpass = 80.0
+feedback_active = true
+feedback_delay_ms = 250.0
+feedback_level_db = -1.0
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_bxdle"]
+resource_name = "Distortion"
+pre_gain = -6.14
+drive = 0.4
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_bd7ex"]
+resource_name = "Reverb"
+room_size = 1.0
+damping = 1.0
+hipass = 1.0
+wet = 0.16
 
 [resource]
 bus/1/name = &"PlayerDeath"
@@ -17,3 +31,7 @@ bus/1/volume_db = 0.0
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectDelay_bkgd4")
 bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectDistortion_bxdle")
+bus/1/effect/1/enabled = false
+bus/1/effect/2/effect = SubResource("AudioEffectReverb_bd7ex")
+bus/1/effect/2/enabled = true
