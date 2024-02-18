@@ -14,6 +14,9 @@ extends CharacterBody2D
 @export_category("Attack")
 @export var Gun: Marker2D
 
+@export_category("Animation")
+@export var hurt_animation_duration : float = 0.1
+
 var previous_motion: Vector2 = Vector2.ZERO
 var previous_aim_position: Vector2 
 var _controller_enabled : bool = true
@@ -81,6 +84,7 @@ func take_damage(damage):
 		return
 	$PlayerAudioController.play_pain_sound()
 	$HealthComponent.take_damage(damage)
+	_hurt_animation()
 
 func _on_gun_shot_taken():
 	$Camera2D.do_shake()
@@ -119,3 +123,9 @@ func _on_health_component_on_death():
 	can_take_damage = false
 	player_died.emit()
 	pass # Replace with function body.
+
+func _hurt_animation():
+	$Sprite2D.modulate = Color(1,0,0,1)
+	await get_tree().create_timer(hurt_animation_duration).timeout
+	$Sprite2D.modulate = Color(1,1,1,1)
+	
