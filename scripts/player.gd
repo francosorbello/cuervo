@@ -15,7 +15,7 @@ extends CharacterBody2D
 @export var Gun: Marker2D
 
 @export_category("Animation")
-@export var hurt_animation_duration : float = 0.1
+@export var hurt_animation_duration : float = 0.2
 
 var previous_motion: Vector2 = Vector2.ZERO
 var previous_aim_position: Vector2 
@@ -126,6 +126,5 @@ func _on_health_component_on_death():
 
 func _hurt_animation():
 	$Sprite2D.modulate = Color(1,0,0,1)
-	await get_tree().create_timer(hurt_animation_duration).timeout
-	$Sprite2D.modulate = Color(1,1,1,1)
+	get_tree().create_tween().tween_property($Sprite2D,"modulate",Color.WHITE,hurt_animation_duration)
 	
