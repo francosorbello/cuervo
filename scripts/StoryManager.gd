@@ -77,11 +77,11 @@ func _physics_process(_delta):
 func toggle_obstacles(value : bool):
 	$TileMap.set_layer_enabled(1, value)
 
-	# if(is_instance_valid($CrowTutorial)):
-	# 	$CrowTutorial.queue_free()
+	if(get_node_or_null("CrowTutorial")):
+		$CrowTutorial.queue_free()
 	
-	# if(is_instance_valid($CrowTutorial2)):
-	# 	$CrowTutorial2.queue_free()
+	if(get_node_or_null("CrowTutorial2")):
+		$CrowTutorial2.queue_free()
 
 func _on_player_player_died():
 	reset_game()
@@ -90,7 +90,7 @@ func _on_player_player_died():
 func reset_game():
 	started = false
 	await $UI/GameUI.transition_in()
-	
+	$SpeakingCrow.toggle(true)
 	$CrowDeathCircle.reset()
 	$Player.reset()
 	toggle_obstacles(true)

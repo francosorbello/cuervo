@@ -19,3 +19,10 @@ func take_damage(_damage):
 ## Destroys the enemy.
 func die():
     queue_free()
+
+## Toggles the obstacle on and off
+## [br]
+## [param value] : True to enable, false otherwise.
+func toggle(value : bool):
+    visible = value
+    $CollisionShape2D.set_deferred("disabled",not value)
