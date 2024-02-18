@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c8davym48as2v" path="res://scenes/crow.tscn" id="3_1yonj"]
 [ext_resource type="Texture2D" uid="uid://pav7k525xr62" path="res://assets/world/ebackground.png" id="3_gkd7v"]
 [ext_resource type="Texture2D" uid="uid://dieqgkoihsp1i" path="res://assets/world/bgtest2.png" id="3_rco6b"]
-[ext_resource type="AudioStream" uid="uid://by0t67dg1pyk1" path="res://assets/sound_effects/tomorrow never knows_3.mp3" id="3_x5d51"]
+[ext_resource type="AudioStream" uid="uid://by0t67dg1pyk1" path="res://assets/sound_effects/song_full.mp3" id="3_x5d51"]
 [ext_resource type="Shader" path="res://assets/shaders/bg2.gdshader" id="4_hq8ie"]
 [ext_resource type="Shader" path="res://assets/shaders/hexgrid.gdshader" id="5_cjns2"]
 [ext_resource type="Script" path="res://scripts/StoryManager.gd" id="5_k7to8"]

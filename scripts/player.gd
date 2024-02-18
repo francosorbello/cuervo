@@ -18,8 +18,12 @@ var previous_motion: Vector2 = Vector2.ZERO
 var previous_aim_position: Vector2 
 var _controller_enabled : bool = true
 var can_take_damage : bool = true
+var initial_position : Vector2
 
 signal player_died
+
+func _ready():
+	initial_position = global_position
 
 ## gets player input and transforms it to velocity
 func get_input():
@@ -29,8 +33,8 @@ func get_input():
 	velocity = input_dir * speed
 
 func reset():
+	global_position = initial_position
 	can_take_damage = true
-	enable_controller()
 	$HealthComponent.reset()
 
 func _physics_process(delta):

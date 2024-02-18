@@ -21,6 +21,7 @@ func set_start_position(pos : Vector2):
     global_position = pos
 
 func _ready():
+    $CrowSpawner.wave_finished.connect(on_wave_finished)
     if autostart:
         start_circle()
 
@@ -38,10 +39,9 @@ func start_circle():
         obstacle.setup(index_to_position(crow_index,current_radius),player)
         obstacles.append(obstacle)
     
-    $CrowSpawner.wave_finished.connect(on_wave_finished)
     spawn_crows()
     $CrowSpawner.start_timer()
-    destroy_obstacles()
+    # destroy_obstacles()
     
 
 func test_kill_obstacles():
@@ -93,5 +93,14 @@ func destroy_obstacles():
     current_radius = 0
     for obstacle in obstacles:
         obstacle.kill_obstacle()
+    obstacles.clear()
+    await get_tree().process_frame
+
+## Delete all obstacles
+func reset():
+    current_radius = 0
+    $CrowSpawner.reset()
+    for obstacle in obstacles:
+        obstacle.queue_free()
     obstacles.clear()
     await get_tree().process_frame

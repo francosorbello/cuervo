@@ -13,6 +13,7 @@ var story_finished : bool = false
 
 ## Starts the story.
 func start_story(body:Node2D):
+	# breakpoint
 	if(started):
 		return
 	if(body.is_in_group("player")):
@@ -51,7 +52,7 @@ func _start_attack():
 	# await get_tree().create_timer($CrowDeathCircle.obstacle_anim_timer).timeout
 	$Player.enable_controller()
 	$Player.story_zoom_out()
-	
+
 ## Spawns a crow in the position of the crow that talks to the player.
 func _spawn_first_crow():
 	story_finished = false
@@ -76,11 +77,24 @@ func _physics_process(_delta):
 func toggle_obstacles(value : bool):
 	$TileMap.set_layer_enabled(1, value)
 
-	if(is_instance_valid($CrowTutorial)):
-		$CrowTutorial.queue_free()
+	# if(is_instance_valid($CrowTutorial)):
+	# 	$CrowTutorial.queue_free()
 	
-	if(is_instance_valid($CrowTutorial2)):
-		$CrowTutorial2.queue_free()
+	# if(is_instance_valid($CrowTutorial2)):
+	# 	$CrowTutorial2.queue_free()
 
 func _on_player_player_died():
-	$UI/GameUI.transition_in()
+	reset_game()
+	# $UI/GameUI.transition_in()
+
+func reset_game():
+	started = false
+	await $UI/GameUI.transition_in()
+	
+	$CrowDeathCircle.reset()
+	$Player.reset()
+	toggle_obstacles(true)
+	await $UI/GameUI.transition_out()
+	
+	$Player.enable_controller()
+	

@@ -34,7 +34,7 @@ func spawn_crows(spawn_points : Array):
 		
 		var crow = Crow.instantiate()
 		add_child(crow)
-
+		crow.add_to_group("enemy")
 		crow.death.connect(on_crow_death)
 		crow.global_position = spawn_points[chosen_obstacle]
 		crow.do_dive()
@@ -71,3 +71,9 @@ func _process(delta):
 func start_timer():
 	current_time = 0
 	$MaxPointTimer.start(max_point_timer)
+
+## Delete all active crows and reset node
+func reset():
+	max_point_reached = false
+	for crow in get_tree().get_nodes_in_group("enemy"):
+		crow.queue_free()
