@@ -41,6 +41,7 @@ shape = SubResource("CapsuleShape2D_o4v3o")
 position = Vector2(26, 9)
 
 [node name="PlayerAudioController" type="AudioStreamPlayer2D" parent="."]
+volume_db = 6.0
 script = ExtResource("5_yho4a")
 pain_sounds = Array[AudioStream]([ExtResource("6_k8ysf"), ExtResource("7_od54g")])
 

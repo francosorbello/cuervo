@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_ysf6a"]
 script = ExtResource("3_ey4ch")
-Line = "[Your death brings us satisfaction."
+Line = "Your death brings us satisfaction."
 duration = 5.0
 single_row = false
 reset_row = false

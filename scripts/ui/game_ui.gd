@@ -18,6 +18,7 @@ func _ready():
 func toggle(value : bool):
     # visible = value
     if(value):
+        display_random_dialogue()
         return transition_in()
     else:
         return transition_out()
@@ -50,7 +51,7 @@ func win_screen():
     $VBoxContainer/RandomLineLabel.text = "[center] %s [/center]" % "A new cycle awaits."
     $VBoxContainer/AspectRatioContainer.visible = false
     $VBoxContainer/WinAspectRatio.visible=true
-    toggle(true)
+    transition_in()
 
 func _on_win_button_pressed():
     get_tree().reload_current_scene()

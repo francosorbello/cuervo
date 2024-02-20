@@ -66,8 +66,13 @@ func _start_attack():
 	$Player.enable_controller()
 	$Player.story_zoom_out()
 
-	$WinTimer.start()
-	print("starting timer"+str($WinTimer.time_left))
+	var timer = 0.0
+	# finish as close to the beat drop as possible
+	if(first_play):
+		timer = 68
+	else:
+		timer = 66
+	$WinTimer.start(timer)
 
 ## Spawns a crow in the position of the crow that talks to the player.
 func _spawn_first_crow():
@@ -110,6 +115,7 @@ func reset_game():
 	started = false
 	$SongManager.stop_music()
 	$WinTimer.stop()
+
 	await $UI/GameUI/GameUI.toggle(true)
 	
 	var first_node = get_node_or_null("FirstCrow")
@@ -127,6 +133,7 @@ func reset_game():
 	
 
 func _on_story_timer_timeout():
+	$UI/TimeUI.stop()
 	player_won = true
 
 	# enemies
@@ -139,7 +146,7 @@ func _on_story_timer_timeout():
 	# player 
 	$Player.can_take_damage = false
 	$Player.disable_controller()
-	$Player.story_zoom_on($Player.global_position) # zoom on self
+	$Player.story_zoom_in()
 
 	# dialogue
 	$UI/DialogueUI.start_dialogue(win_dialogue)
