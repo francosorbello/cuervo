@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://caht7udc7i4rb"]
+
+[ext_resource type="Texture2D" uid="uid://dj4ffmffnru0k" path="res://assets/Spritesheet/particle.png" id="1_syemm"]
+
+[sub_resource type="Curve" id="Curve_ghh7r"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.105943, 1), 0.0, 0.0, 0, 0, Vector2(0.878553, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="DustParticles" type="CPUParticles2D"]
+scale = Vector2(10, 10)
+amount = 100
+lifetime = 1.5
+texture = ExtResource("1_syemm")
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_ghh7r")
+color = Color(0.168627, 0.168627, 0.168627, 0.403922)

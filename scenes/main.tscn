@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://dehumyati8328"]
+[gd_scene load_steps=30 format=3 uid="uid://dehumyati8328"]
 
 [ext_resource type="PackedScene" uid="uid://d15fskx1myq4q" path="res://scenes/ui/dialogue_ui.tscn" id="1_4ts40"]
+[ext_resource type="PackedScene" uid="uid://caht7udc7i4rb" path="res://scenes/dust_particles.tscn" id="1_6p4uo"]
 [ext_resource type="PackedScene" uid="uid://lxsxg7btmnq2" path="res://scenes/player.tscn" id="1_eckfl"]
 [ext_resource type="Shader" path="res://assets/shaders/vignette.gdshader" id="1_juiww"]
 [ext_resource type="Texture2D" uid="uid://bml5gyg0rklyx" path="res://assets/world/ebackground2.png" id="2_drxlm"]
@@ -151,6 +152,9 @@ shader_parameter/SCALE = Vector2(1000, 1000)
 [node name="Foreground" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
+[node name="DustParticles" parent="Foreground" instance=ExtResource("1_6p4uo")]
+position = Vector2(577, 725)
+
 [node name="StoryManager" type="Node2D" parent="Foreground"]
 script = ExtResource("5_k7to8")
 initial_dialogue = ExtResource("6_g54dm")
@@ -224,6 +228,7 @@ position = Vector2(449, 597)
 layer = -1
 
 [node name="Blobs" type="TextureRect" parent="BG Effects"]
+visible = false
 material = SubResource("ShaderMaterial_g01ky")
 anchors_preset = 15
 anchor_right = 1.0

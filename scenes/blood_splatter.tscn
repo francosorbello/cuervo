@@ -16,9 +16,10 @@ texture = ExtResource("1_rhmfp")
 gravity = Vector2(0, 0)
 initial_velocity_min = 624.98
 initial_velocity_max = 1000.0
+angle_max = 90.0
 scale_amount_min = 0.1
 scale_amount_max = 1.3
-color = Color(0.631373, 0, 0, 1)
+color = Color(0.192157, 0, 0, 1)
 script = ExtResource("2_qyubn")
 
 [node name="Timer" type="Timer" parent="."]
