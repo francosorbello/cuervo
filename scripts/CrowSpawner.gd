@@ -77,3 +77,7 @@ func reset():
 	max_point_reached = false
 	for crow in get_tree().get_nodes_in_group("enemy"):
 		crow.queue_free()
+
+func kill_all():
+	for crow in get_tree().get_nodes_in_group("enemy"):
+		crow.do_die()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dehumyati8328"]
+[gd_scene load_steps=29 format=3 uid="uid://dehumyati8328"]
 
 [ext_resource type="PackedScene" uid="uid://d15fskx1myq4q" path="res://scenes/ui/dialogue_ui.tscn" id="1_4ts40"]
 [ext_resource type="PackedScene" uid="uid://caht7udc7i4rb" path="res://scenes/dust_particles.tscn" id="1_6p4uo"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dieqgkoihsp1i" path="res://assets/world/bgtest2.png" id="3_rco6b"]
 [ext_resource type="Script" path="res://scripts/StoryManager.gd" id="5_k7to8"]
 [ext_resource type="Resource" uid="uid://deoph1kkhwhef" path="res://scripts/dialogues/resources/FirstConversation.tres" id="6_g54dm"]
+[ext_resource type="Resource" uid="uid://6laxov4au54i" path="res://scripts/dialogues/resources/WinConversation.tres" id="8_5lf7u"]
 [ext_resource type="PackedScene" uid="uid://dndjt2erlthh4" path="res://scenes/crow_death_circle.tscn" id="8_yrqfe"]
 [ext_resource type="PackedScene" uid="uid://cvrrroqptwtsc" path="res://scenes/game_ui.tscn" id="9_8tsmg"]
 [ext_resource type="PackedScene" uid="uid://c3q0uxppsbpmy" path="res://scenes/crow_obstacle.tscn" id="9_be1cu"]
@@ -163,9 +164,10 @@ position = Vector2(577, 725)
 
 [node name="StoryManager" type="Node2D" parent="Foreground"]
 script = ExtResource("5_k7to8")
+crow = ExtResource("3_1yonj")
 initial_dialogue = ExtResource("6_g54dm")
 random_dialogue = ExtResource("3_l0rc3")
-crow = ExtResource("3_1yonj")
+win_dialogue = ExtResource("8_5lf7u")
 skip_dialogue = true
 
 [node name="TileMap" type="TileMap" parent="Foreground/StoryManager"]
@@ -231,6 +233,10 @@ shape = SubResource("RectangleShape2D_o1nr1")
 [node name="Marker2D" type="Marker2D" parent="Foreground/StoryManager"]
 position = Vector2(449, 597)
 
+[node name="WinTimer" type="Timer" parent="Foreground/StoryManager"]
+wait_time = 10.0
+one_shot = true
+
 [node name="BG" type="CanvasLayer" parent="."]
 layer = -2
 
@@ -256,3 +262,4 @@ color = Color(1, 0, 0, 0.313726)
 [connection signal="dialogue_finished" from="Foreground/StoryManager/UI/DialogueUI" to="Foreground/StoryManager" method="_on_dialogue_ui_dialogue_finished"]
 [connection signal="player_died" from="Foreground/StoryManager/Player" to="Foreground/StoryManager" method="_on_player_player_died"]
 [connection signal="body_exited" from="Foreground/StoryManager/TriggerArea" to="Foreground/StoryManager" method="_on_trigger_area_body_exited"]
+[connection signal="timeout" from="Foreground/StoryManager/WinTimer" to="Foreground/StoryManager" method="_on_story_timer_timeout"]

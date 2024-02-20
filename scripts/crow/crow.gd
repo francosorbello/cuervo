@@ -61,6 +61,9 @@ func _on_attack_detect_zone_body_exited(body:Node2D):
 func do_dive():
 	$StateMachine.transition_to("DiveState")
 
+func do_die():
+	$StateMachine.transition_to("DeathState")
+
 ## Destroys the enemy.
 func die():
 	queue_free()

@@ -2,9 +2,11 @@ extends Node2D
 ## Node that manages all story related tasks, like dialogues, spawning, etc.
 
 # @export var start_timer : float = 0.5
+@export var crow : PackedScene 
+@export_category("Dialogues")
 @export var initial_dialogue : Dialogue ## Dialogue to display on first game loop.
 @export var random_dialogue : Dialogue ## random lines that the enemy says when player dies.
-@export var crow : PackedScene 
+@export var win_dialogue : Dialogue ## when player wins.
 
 @export_category("Debug")
 @export var skip_dialogue : bool = false ## skips the dialogue and goes directly to fighting.
@@ -13,6 +15,7 @@ var started : bool = false
 var story_finished : bool = false
 
 var first_play : bool = true
+var player_won : bool = false
 
 ## Starts the story.
 func start_story(body:Node2D):
@@ -45,6 +48,8 @@ func test_zoom_out():
 	$Player.story_zoom_out()
 
 func _on_dialogue_ui_dialogue_finished():
+	if(player_won):
+		return
 	story_finished = true
 	_start_attack()
 	pass # Replace with function body.
@@ -59,6 +64,9 @@ func _start_attack():
 
 	$Player.enable_controller()
 	$Player.story_zoom_out()
+
+	$WinTimer.start()
+	print("starting timer"+str($WinTimer.time_left))
 
 ## Spawns a crow in the position of the crow that talks to the player.
 func _spawn_first_crow():
@@ -100,7 +108,7 @@ func reset_game():
 		first_play = false
 	started = false
 	$SongManager.stop_music()
-
+	$WinTimer.stop()
 	await $UI/GameUI/GameUI.toggle(true)
 	
 	var first_node = get_node_or_null("FirstCrow")
@@ -116,3 +124,25 @@ func reset_game():
 	
 	$Player.enable_controller()
 	
+
+func _on_story_timer_timeout():
+	player_won = true
+
+	# enemies
+	$CrowDeathCircle.destroy_obstacles()
+	var first_crow = get_node_or_null("FirstCrow")
+	if(first_crow):
+		first_crow.do_die()
+
+
+	# player 
+	$Player.can_take_damage = false
+	$Player.disable_controller()
+	$Player.story_zoom_on($Player.global_position) # zoom on self
+
+	# dialogue
+	$UI/DialogueUI.start_dialogue(win_dialogue)
+	pass # Replace with function body.
+
+func win():
+	pass

@@ -94,6 +94,7 @@ func destroy_obstacles():
     for obstacle in obstacles:
         obstacle.kill_obstacle()
     obstacles.clear()
+    $CrowSpawner.kill_all()
     await get_tree().process_frame
 
 ## Delete all obstacles
