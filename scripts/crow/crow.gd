@@ -24,6 +24,7 @@ func _ready():
 ## [br]
 ## [param damage] : amount of damage the enemy takes. [br]
 func take_damage(damage: float):
+	$SplatterComponent.do_splatter(player, self)
 	health.take_damage(damage)
 
 # Destroys the enemy when health reaches 0.

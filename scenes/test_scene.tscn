@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://w2nfg1b5uso8"]
+
+[ext_resource type="PackedScene" uid="uid://lxsxg7btmnq2" path="res://scenes/player.tscn" id="1_106ef"]
+[ext_resource type="PackedScene" uid="uid://c8davym48as2v" path="res://scenes/crow.tscn" id="2_ymrk7"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_106ef")]
+
+[node name="Crow" parent="." instance=ExtResource("2_ymrk7")]
+position = Vector2(382, 126)

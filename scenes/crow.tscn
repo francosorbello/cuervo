@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://c8davym48as2v"]
+[gd_scene load_steps=23 format=3 uid="uid://c8davym48as2v"]
 
 [ext_resource type="Script" path="res://scripts/crow/crow.gd" id="1_b8dg7"]
 [ext_resource type="Texture2D" uid="uid://dyiwy8nlq26fo" path="res://assets/raven2.png" id="2_a1n4n"]
+[ext_resource type="PackedScene" uid="uid://gln0bw3eitgr" path="res://scenes/splatter_component.tscn" id="2_fe327"]
 [ext_resource type="PackedScene" uid="uid://eead018oatl1" path="res://scenes/health_component.tscn" id="3_dmn0e"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="4_gqo0f"]
 [ext_resource type="AudioStream" uid="uid://dbb0ner8g0wmb" path="res://assets/sound_effects/crow/crow_flap.mp3" id="4_gu65t"]
@@ -176,6 +177,8 @@ collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_b8dg7")
 health = NodePath("HealthComponent")
+
+[node name="SplatterComponent" parent="." instance=ExtResource("2_fe327")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708
