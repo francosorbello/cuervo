@@ -168,7 +168,6 @@ crow = ExtResource("3_1yonj")
 initial_dialogue = ExtResource("6_g54dm")
 random_dialogue = ExtResource("3_l0rc3")
 win_dialogue = ExtResource("8_5lf7u")
-skip_dialogue = true
 
 [node name="TileMap" type="TileMap" parent="Foreground/StoryManager"]
 tile_set = SubResource("TileSet_b0q7g")
@@ -192,7 +191,6 @@ modulate = Color(1, 1, 1, 0)
 
 [node name="GameUI" type="CanvasLayer" parent="Foreground/StoryManager/UI"]
 layer = 8
-visible = false
 
 [node name="GameUI" parent="Foreground/StoryManager/UI/GameUI" instance=ExtResource("9_8tsmg")]
 
@@ -234,7 +232,7 @@ shape = SubResource("RectangleShape2D_o1nr1")
 position = Vector2(449, 597)
 
 [node name="WinTimer" type="Timer" parent="Foreground/StoryManager"]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="BG" type="CanvasLayer" parent="."]

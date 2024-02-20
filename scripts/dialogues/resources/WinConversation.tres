@@ -1,22 +1,57 @@
-[gd_resource type="Resource" script_class="Dialogue" load_steps=5 format=3 uid="uid://6laxov4au54i"]
+[gd_resource type="Resource" script_class="Dialogue" load_steps=10 format=3 uid="uid://6laxov4au54i"]
 
 [ext_resource type="Script" path="res://scripts/dialogues/DialogueLine.gd" id="1_0meet"]
 [ext_resource type="Script" path="res://scripts/dialogues/Dialogue.gd" id="1_3p2q4"]
 
 [sub_resource type="Resource" id="Resource_23dps"]
 script = ExtResource("1_0meet")
-Line = "You win."
+Line = "[color=red]Enough.[/color]"
 duration = 3.0
-single_row = false
+single_row = true
 reset_row = false
 
 [sub_resource type="Resource" id="Resource_hnc63"]
 script = ExtResource("1_0meet")
-Line = "So cool!"
-duration = 5.0
+Line = "..."
+duration = 3.0
 single_row = false
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_ox8d4"]
+script = ExtResource("1_0meet")
+Line = "A moment of respite for you."
+duration = 3.0
+single_row = false
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_memal"]
+script = ExtResource("1_0meet")
+Line = "Though we are sure you will come back."
+duration = 3.0
+single_row = false
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_wljwm"]
+script = ExtResource("1_0meet")
+Line = "Punishment is a blessing for those who seek forgiveness."
+duration = 3.0
+single_row = true
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_euayi"]
+script = ExtResource("1_0meet")
+Line = "..."
+duration = 3.0
+single_row = true
+reset_row = false
+
+[sub_resource type="Resource" id="Resource_vlgc7"]
+script = ExtResource("1_0meet")
+Line = "[color=red] See you soon. [/color]"
+duration = 5.0
+single_row = true
 reset_row = false
 
 [resource]
 script = ExtResource("1_3p2q4")
-lines = Array[ExtResource("1_0meet")]([SubResource("Resource_23dps"), SubResource("Resource_hnc63")])
+lines = Array[ExtResource("1_0meet")]([SubResource("Resource_23dps"), SubResource("Resource_hnc63"), SubResource("Resource_ox8d4"), SubResource("Resource_memal"), SubResource("Resource_wljwm"), SubResource("Resource_euayi"), SubResource("Resource_vlgc7")])

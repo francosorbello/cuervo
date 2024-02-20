@@ -78,4 +78,14 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Retry"
 
+[node name="WinAspectRatio" type="AspectRatioContainer" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="WinButton" type="Button" parent="VBoxContainer/WinAspectRatio"]
+layout_mode = 2
+text = "Restart"
+
 [connection signal="pressed" from="VBoxContainer/AspectRatioContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/WinAspectRatio/WinButton" to="." method="_on_win_button_pressed"]

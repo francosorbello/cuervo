@@ -49,6 +49,7 @@ func test_zoom_out():
 
 func _on_dialogue_ui_dialogue_finished():
 	if(player_won):
+		$UI/GameUI/GameUI.win_screen()
 		return
 	story_finished = true
 	_start_attack()
