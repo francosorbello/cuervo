@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://dehumyati8328"]
+[gd_scene load_steps=28 format=3 uid="uid://dehumyati8328"]
 
 [ext_resource type="PackedScene" uid="uid://d15fskx1myq4q" path="res://scenes/ui/dialogue_ui.tscn" id="1_4ts40"]
 [ext_resource type="PackedScene" uid="uid://caht7udc7i4rb" path="res://scenes/dust_particles.tscn" id="1_6p4uo"]
+[ext_resource type="Shader" path="res://assets/shaders/vhs2.gdshader" id="1_avni8"]
 [ext_resource type="PackedScene" uid="uid://lxsxg7btmnq2" path="res://scenes/player.tscn" id="1_eckfl"]
 [ext_resource type="Shader" path="res://assets/shaders/vignette.gdshader" id="1_juiww"]
 [ext_resource type="Texture2D" uid="uid://bml5gyg0rklyx" path="res://assets/world/ebackground2.png" id="2_drxlm"]
@@ -9,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://pav7k525xr62" path="res://assets/world/ebackground.png" id="3_gkd7v"]
 [ext_resource type="Resource" uid="uid://b3t4566rkrqll" path="res://scripts/dialogues/resources/Taunts.tres" id="3_l0rc3"]
 [ext_resource type="Texture2D" uid="uid://dieqgkoihsp1i" path="res://assets/world/bgtest2.png" id="3_rco6b"]
-[ext_resource type="Shader" path="res://assets/shaders/bg2.gdshader" id="4_hq8ie"]
-[ext_resource type="Shader" path="res://assets/shaders/hexgrid.gdshader" id="5_cjns2"]
 [ext_resource type="Script" path="res://scripts/StoryManager.gd" id="5_k7to8"]
 [ext_resource type="Resource" uid="uid://deoph1kkhwhef" path="res://scripts/dialogues/resources/FirstConversation.tres" id="6_g54dm"]
 [ext_resource type="PackedScene" uid="uid://dndjt2erlthh4" path="res://scenes/crow_death_circle.tscn" id="8_yrqfe"]
@@ -19,6 +18,17 @@
 [ext_resource type="Texture2D" uid="uid://b6if53t8cjyqs" path="res://assets/world/bakground.png" id="9_bltpd"]
 [ext_resource type="PackedScene" uid="uid://bds3qf37v2woa" path="res://scenes/song_manager.tscn" id="11_ji2tr"]
 [ext_resource type="PackedScene" uid="uid://b53o7ht1ufjhg" path="res://scenes/crow_tutorial.tscn" id="11_oq0dj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hj2h"]
+shader = ExtResource("1_avni8")
+shader_parameter/levels = 3
+shader_parameter/spread = 0.005
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5kml"]
+shader = ExtResource("1_juiww")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w5amq"]
 texture = ExtResource("2_drxlm")
@@ -124,30 +134,26 @@ shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1nr1"]
 size = Vector2(164, 110)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g01ky"]
-shader = ExtResource("4_hq8ie")
-shader_parameter/iterations = 17
-shader_parameter/formuparam = 0.53
-shader_parameter/volsteps = 10
-shader_parameter/stepsize = -0.095
-shader_parameter/zoom = 2.215
-shader_parameter/tile = 1.425
-shader_parameter/speed = 0.001
-shader_parameter/brightness = 0.0015
-shader_parameter/darkmatter = 3.86
-shader_parameter/distfading = 1.305
-shader_parameter/saturation = 4.55
-shader_parameter/rotation = Vector2(1.205, 0)
-shader_parameter/colorampMix = 0.5
-shader_parameter/isColoramp = false
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pg6ph"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_410fa"]
-shader = ExtResource("5_cjns2")
-shader_parameter/SCALE = Vector2(1000, 1000)
-
 [node name="Main" type="Node2D"]
+
+[node name="PostProcessing" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ChromaticAberration" type="ColorRect" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_5hj2h")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vignette" type="ColorRect" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_c5kml")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Foreground" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -184,6 +190,7 @@ modulate = Color(1, 1, 1, 0)
 
 [node name="GameUI" type="CanvasLayer" parent="Foreground/StoryManager/UI"]
 layer = 8
+visible = false
 
 [node name="GameUI" parent="Foreground/StoryManager/UI/GameUI" instance=ExtResource("9_8tsmg")]
 
@@ -223,32 +230,6 @@ shape = SubResource("RectangleShape2D_o1nr1")
 
 [node name="Marker2D" type="Marker2D" parent="Foreground/StoryManager"]
 position = Vector2(449, 597)
-
-[node name="BG Effects" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="Blobs" type="TextureRect" parent="BG Effects"]
-visible = false
-material = SubResource("ShaderMaterial_g01ky")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("NoiseTexture2D_pg6ph")
-expand_mode = 2
-
-[node name="Hex pattern" type="ColorRect" parent="BG Effects"]
-visible = false
-material = SubResource("ShaderMaterial_410fa")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CanvasModulate" type="CanvasModulate" parent="BG Effects"]
-color = Color(1, 0, 0, 0.313726)
 
 [node name="BG" type="CanvasLayer" parent="."]
 layer = -2
