@@ -133,7 +133,6 @@ func reset_game():
 	
 
 func _on_story_timer_timeout():
-	$UI/TimeUI.stop()
 	player_won = true
 
 	# enemies

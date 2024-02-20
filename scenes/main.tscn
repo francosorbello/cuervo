@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dehumyati8328"]
+[gd_scene load_steps=29 format=3 uid="uid://dehumyati8328"]
 
 [ext_resource type="PackedScene" uid="uid://d15fskx1myq4q" path="res://scenes/ui/dialogue_ui.tscn" id="1_4ts40"]
 [ext_resource type="PackedScene" uid="uid://caht7udc7i4rb" path="res://scenes/dust_particles.tscn" id="1_6p4uo"]
@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://b6if53t8cjyqs" path="res://assets/world/bakground.png" id="9_bltpd"]
 [ext_resource type="PackedScene" uid="uid://bds3qf37v2woa" path="res://scenes/song_manager.tscn" id="11_ji2tr"]
 [ext_resource type="PackedScene" uid="uid://b53o7ht1ufjhg" path="res://scenes/crow_tutorial.tscn" id="11_oq0dj"]
-[ext_resource type="PackedScene" uid="uid://cy3yehcccfkly" path="res://scenes/ui/time_ui.tscn" id="14_lopn7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5hj2h"]
 shader = ExtResource("1_avni8")
@@ -186,8 +185,6 @@ position = Vector2(479, 1188)
 
 [node name="UI" type="CanvasLayer" parent="Foreground/StoryManager"]
 layer = 2
-
-[node name="TimeUI" parent="Foreground/StoryManager/UI" instance=ExtResource("14_lopn7")]
 
 [node name="DialogueUI" parent="Foreground/StoryManager/UI" instance=ExtResource("1_4ts40")]
 modulate = Color(1, 1, 1, 0)

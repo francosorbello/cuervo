@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_d10j5"]
 [ext_resource type="PackedScene" uid="uid://cfrc8awt1dy46" path="res://scenes/bullet.tscn" id="2_a464t"]
 [ext_resource type="AudioStream" uid="uid://cfinaqhrdsgfp" path="res://assets/sound_effects/gun_shot.mp3" id="3_2eix6"]
-[ext_resource type="Texture2D" uid="uid://d3qcsppypqclm" path="res://assets/Spritesheet/bullet.png" id="4_3ht1m"]
+[ext_resource type="Texture2D" uid="uid://d3qcsppypqclm" path="res://assets/Spritesheet/light.png" id="4_dro4e"]
 
 [node name="Gun" type="Marker2D"]
 script = ExtResource("1_d10j5")
@@ -18,7 +18,7 @@ enabled = false
 energy = 2.0
 range_layer_min = 1
 range_layer_max = 1
-texture = ExtResource("4_3ht1m")
+texture = ExtResource("4_dro4e")
 texture_scale = 2.0
 
 [node name="Timer" type="Timer" parent="."]
