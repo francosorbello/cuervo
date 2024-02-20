@@ -51,7 +51,6 @@ func _on_dialogue_ui_dialogue_finished():
 	if(player_won):
 		$UI/GameUI/GameUI.win_screen()
 		return
-	story_finished = true
 	_start_attack()
 	pass # Replace with function body.
 
@@ -63,9 +62,6 @@ func _start_attack():
 	if(not first_play):
 		$SongManager.play_battle($CrowDeathCircle.get_spawn_anim_duration())
 
-	$Player.enable_controller()
-	$Player.story_zoom_out()
-
 	var timer = 0.0
 	# finish as close to the beat drop as possible
 	if(first_play):
@@ -73,6 +69,11 @@ func _start_attack():
 	else:
 		timer = 66
 	$WinTimer.start(timer)
+
+	$Player.story_zoom_out()
+	await get_tree().create_timer($CrowDeathCircle.get_spawn_anim_duration()).timeout
+	story_finished = true
+	$Player.enable_controller()
 
 ## Spawns a crow in the position of the crow that talks to the player.
 func _spawn_first_crow():
