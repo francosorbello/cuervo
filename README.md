@@ -2,6 +2,8 @@
 
 2D top-down shooter developed in Godot 4.
 
+Play on Itch.io: https://followtherules.itch.io/cuervo
+
 ## Assets used
 
 - https://opengameart.org/content/dragon-flap-0
